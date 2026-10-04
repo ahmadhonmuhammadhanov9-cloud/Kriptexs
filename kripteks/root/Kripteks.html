@@ -1,0 +1,4310 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no, maximum-scale=1">
+  <meta name="theme-color" content="#06070a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KRIPTEKS">
+  <link rel="manifest"
+    href='data:application/manifest+json,{"name":"KRIPTEKS","short_name":"KRIPTEKS","display":"fullscreen","orientation":"portrait","background_color":"#06070a","theme_color":"#06070a","start_url":"./"}'>
+  <title>KRIPTEKS v6.0 // FULL APP</title>
+  <style>
+    [data-theme="kripteks"] {
+      --bg: #06070a;
+      --bg2: #0a0c10;
+      --bg3: #0e1116;
+      --panel: rgba(18, 22, 28, .85);
+      --panel2: rgba(24, 30, 38, .9);
+      --panel3: rgba(32, 40, 50, .95);
+      --glass: rgba(255, 255, 255, .03);
+      --glass-brd: rgba(255, 255, 255, .08);
+      --line: rgba(90, 120, 80, .2);
+      --line-brt: rgba(155, 178, 106, .5);
+      --ink: #e8e6d8;
+      --ink-dim: #9aa08c;
+      --ink-faint: #5a6050;
+      --accent: #9bb26a;
+      --accent-brt: #c4dc8e;
+      --accent-glow: rgba(155, 178, 106, .4);
+      --warn: #e8b95c;
+      --danger: #d94a3a;
+      --ok: #6b8f5a;
+      --info: #5a9ac8;
+      --grad: linear-gradient(135deg, #9bb26a 0%, #5c6b47 100%);
+      --font: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'Consolas', monospace;
+      --r: 8px;
+      --r-lg: 14px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, .5);
+      --bg-img: radial-gradient(circle at 20% 10%, rgba(155, 178, 106, .08) 0%, transparent 50%), radial-gradient(circle at 80% 90%, rgba(155, 178, 106, .05) 0%, transparent 50%)
+    }
+
+    [data-theme="xp-luna"] {
+      --bg: #245edb;
+      --bg2: #1f4fc4;
+      --bg3: #1943a8;
+      --panel: #ece9d8;
+      --panel2: #ffffff;
+      --panel3: #d4d0c8;
+      --glass: rgba(255, 255, 255, .55);
+      --glass-brd: #0a4a9c;
+      --line: #7f9db9;
+      --line-brt: #003c74;
+      --ink: #000;
+      --ink-dim: #2a3a4a;
+      --ink-faint: #5a6a7a;
+      --accent: #e87b1e;
+      --accent-brt: #ff9a3c;
+      --accent-glow: rgba(232, 123, 30, .5);
+      --warn: #e8a000;
+      --danger: #cc0000;
+      --ok: #008000;
+      --info: #0060c0;
+      --grad: linear-gradient(180deg, #7ab5f0 0%, #3a7fd5 45%, #1a56b8 55%, #2a6cd0 100%);
+      --font: 'Tahoma', 'Segoe UI', sans-serif;
+      --mono: 'Lucida Console', monospace;
+      --r: 3px;
+      --r-lg: 8px;
+      --shadow: 0 4px 16px rgba(0, 30, 90, .4);
+      --bg-img: radial-gradient(ellipse at 50% 120%, #5a9ce0 0%, transparent 60%), linear-gradient(180deg, #3a7fd5 0%, #245edb 40%, #1943a8 100%)
+    }
+
+    [data-theme="win7-aero"] {
+      --bg: #0a1a2a;
+      --bg2: #122b44;
+      --bg3: #1a3a5c;
+      --panel: rgba(180, 220, 255, .14);
+      --panel2: rgba(200, 230, 255, .1);
+      --panel3: rgba(220, 240, 255, .08);
+      --glass: rgba(255, 255, 255, .08);
+      --glass-brd: rgba(180, 220, 255, .35);
+      --line: rgba(180, 220, 255, .25);
+      --line-brt: rgba(120, 190, 255, .7);
+      --ink: #eaf4ff;
+      --ink-dim: #a8c5e0;
+      --ink-faint: #6a8aa8;
+      --accent: #5db8f0;
+      --accent-brt: #8ad0ff;
+      --accent-glow: rgba(93, 184, 240, .6);
+      --warn: #ffb85c;
+      --danger: #e05060;
+      --ok: #4ab87a;
+      --info: #40c8e0;
+      --grad: linear-gradient(135deg, #5db8f0 0%, #3d7dbf 100%);
+      --font: 'Segoe UI', sans-serif;
+      --mono: 'Consolas', monospace;
+      --r: 6px;
+      --r-lg: 10px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, .5);
+      --bg-img: radial-gradient(ellipse at 15% 20%, rgba(60, 140, 220, .5) 0%, transparent 40%), radial-gradient(ellipse at 85% 80%, rgba(40, 100, 180, .4) 0%, transparent 40%), radial-gradient(ellipse at 50% 50%, #1a3a5c 0%, #0a1a2a 100%)
+    }
+
+    [data-theme="win11"] {
+      --bg: #f3f3f3;
+      --bg2: #eaeaea;
+      --bg3: #e0e0e0;
+      --panel: rgba(255, 255, 255, .72);
+      --panel2: rgba(249, 249, 249, .8);
+      --panel3: rgba(240, 240, 240, .88);
+      --glass: rgba(0, 100, 200, .04);
+      --glass-brd: rgba(0, 100, 200, .1);
+      --line: #e0e0e0;
+      --line-brt: #0067c0;
+      --ink: #1a1a1a;
+      --ink-dim: #5a5a5a;
+      --ink-faint: #8a8a8a;
+      --accent: #0067c0;
+      --accent-brt: #1084d0;
+      --accent-glow: rgba(0, 103, 192, .3);
+      --warn: #c08a00;
+      --danger: #d02020;
+      --ok: #107c10;
+      --info: #0080a0;
+      --grad: linear-gradient(135deg, #0067c0 0%, #004a8a 100%);
+      --font: 'Segoe UI Variable', 'Segoe UI', sans-serif;
+      --mono: 'Cascadia Mono', monospace;
+      --r: 8px;
+      --r-lg: 12px;
+      --shadow: 0 4px 20px rgba(0, 0, 0, .08);
+      --bg-img: radial-gradient(ellipse at 30% 0%, #e0e8ff 0%, #f3f3f3 60%)
+    }
+
+    [data-theme="macos"] {
+      --bg: #f5f5f7;
+      --bg2: #e8e8ec;
+      --bg3: #dcdce0;
+      --panel: rgba(255, 255, 255, .75);
+      --panel2: rgba(250, 250, 252, .85);
+      --panel3: rgba(240, 240, 244, .9);
+      --glass: rgba(0, 0, 0, .03);
+      --glass-brd: rgba(0, 0, 0, .08);
+      --line: #d0d0d5;
+      --line-brt: #007aff;
+      --ink: #1a1a1a;
+      --ink-dim: #6a6a70;
+      --ink-faint: #9a9aa0;
+      --accent: #007aff;
+      --accent-brt: #3395ff;
+      --accent-glow: rgba(0, 122, 255, .3);
+      --warn: #ff9500;
+      --danger: #ff3b30;
+      --ok: #34c759;
+      --info: #5ac8fa;
+      --grad: linear-gradient(135deg, #007aff 0%, #0051d5 100%);
+      --font: -apple-system, 'SF Pro Display', sans-serif;
+      --mono: 'SF Mono', monospace;
+      --r: 10px;
+      --r-lg: 14px;
+      --shadow: 0 2px 16px rgba(0, 0, 0, .08);
+      --bg-img: linear-gradient(180deg, #f5f5f7 0%, #e8e8ec 100%)
+    }
+
+    [data-theme="cyberpunk"] {
+      --bg: #0a0418;
+      --bg2: #120a20;
+      --bg3: #1a0e2a;
+      --panel: rgba(26, 14, 42, .85);
+      --panel2: rgba(34, 20, 58, .9);
+      --panel3: rgba(42, 26, 72, .95);
+      --glass: rgba(255, 0, 160, .05);
+      --glass-brd: rgba(255, 0, 160, .25);
+      --line: rgba(58, 32, 88, .5);
+      --line-brt: #ff00a0;
+      --ink: #f0d0ff;
+      --ink-dim: #c080e0;
+      --ink-faint: #8040a0;
+      --accent: #ff00a0;
+      --accent-brt: #ff40c0;
+      --accent-glow: rgba(255, 0, 160, .6);
+      --warn: #00e0e0;
+      --danger: #ff0040;
+      --ok: #00ff80;
+      --info: #00e0ff;
+      --grad: linear-gradient(135deg, #ff00a0 0%, #a020c0 100%);
+      --font: 'Consolas', monospace;
+      --mono: 'Consolas', monospace;
+      --r: 0;
+      --r-lg: 4px;
+      --shadow: 0 0 40px rgba(255, 0, 160, .3);
+      --bg-img: linear-gradient(180deg, #0a0418 0%, #1a0e2a 50%, #0a0418 100%), radial-gradient(ellipse at 30% 30%, #3a1050 0%, #0a0418 60%)
+    }
+
+    [data-theme="matrix"] {
+      --bg: #000;
+      --bg2: #020a02;
+      --bg3: #041004;
+      --panel: rgba(4, 16, 4, .9);
+      --panel2: rgba(6, 24, 6, .92);
+      --panel3: rgba(10, 34, 10, .95);
+      --glass: rgba(32, 255, 32, .04);
+      --glass-brd: rgba(32, 255, 32, .2);
+      --line: rgba(10, 58, 10, .5);
+      --line-brt: #20ff20;
+      --ink: #20ff20;
+      --ink-dim: #10a010;
+      --ink-faint: #086008;
+      --accent: #20ff20;
+      --accent-brt: #60ff60;
+      --accent-glow: rgba(32, 255, 32, .6);
+      --warn: #d0ff60;
+      --danger: #ff2020;
+      --ok: #20ff20;
+      --info: #20ffa0;
+      --grad: linear-gradient(135deg, #20ff20 0%, #108010 100%);
+      --font: 'Courier New', monospace;
+      --mono: 'Courier New', monospace;
+      --r: 0;
+      --r-lg: 0;
+      --shadow: 0 0 30px rgba(32, 255, 32, .3);
+      --bg-img: linear-gradient(rgba(0, 255, 0, .04) 1px, transparent 1px), radial-gradient(ellipse at 50% 0%, #0a2a0a 0%, #000 70%)
+    }
+
+    [data-theme="kali"] {
+      --bg: #000;
+      --bg2: #0a0e14;
+      --bg3: #0f1419;
+      --panel: rgba(15, 20, 25, .9);
+      --panel2: rgba(20, 26, 34, .92);
+      --panel3: rgba(26, 33, 43, .95);
+      --glass: rgba(38, 120, 191, .06);
+      --glass-brd: rgba(38, 120, 191, .25);
+      --line: rgba(38, 120, 191, .2);
+      --line-brt: #2678bf;
+      --ink: #c8d4e0;
+      --ink-dim: #7088a0;
+      --ink-faint: #4a5a70;
+      --accent: #4a9fe8;
+      --accent-brt: #70c0ff;
+      --accent-glow: rgba(74, 159, 232, .5);
+      --warn: #ffc040;
+      --danger: #e04060;
+      --ok: #20b060;
+      --info: #20b8c8;
+      --grad: linear-gradient(135deg, #4a9fe8 0%, #1a6eb5 100%);
+      --font: 'DejaVu Sans', sans-serif;
+      --mono: 'DejaVu Sans Mono', monospace;
+      --r: 0;
+      --r-lg: 2px;
+      --shadow: 0 4px 24px rgba(38, 120, 191, .2);
+      --bg-img: linear-gradient(rgba(30, 50, 80, .15) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 50, 80, .15) 1px, transparent 1px)
+    }
+
+    [data-theme="kurtlar"] {
+      --bg: #0a0505;
+      --bg2: #100808;
+      --bg3: #180a0a;
+      --panel: rgba(24, 10, 10, .85);
+      --panel2: rgba(34, 14, 14, .9);
+      --panel3: rgba(42, 20, 20, .95);
+      --glass: rgba(192, 42, 42, .05);
+      --glass-brd: rgba(192, 42, 42, .2);
+      --line: rgba(122, 32, 32, .4);
+      --line-brt: #c02a2a;
+      --ink: #e8d8d0;
+      --ink-dim: #a08080;
+      --ink-faint: #604040;
+      --accent: #c02a2a;
+      --accent-brt: #e04a4a;
+      --accent-glow: rgba(192, 42, 42, .5);
+      --warn: #e0b860;
+      --danger: #d02020;
+      --ok: #508040;
+      --info: #804020;
+      --grad: linear-gradient(135deg, #c02a2a 0%, #5a1010 100%);
+      --font: 'Tahoma', sans-serif;
+      --mono: 'Courier New', monospace;
+      --r: 4px;
+      --r-lg: 6px;
+      --shadow: 0 8px 32px rgba(192, 42, 42, .3);
+      --bg-img: radial-gradient(ellipse at 50% 0%, #2a0a0a 0%, #0a0505 70%)
+    }
+
+    [data-theme="gold"] {
+      --bg: #0a0805;
+      --bg2: #100c08;
+      --bg3: #18120a;
+      --panel: rgba(24, 18, 10, .85);
+      --panel2: rgba(34, 26, 16, .9);
+      --panel3: rgba(42, 32, 20, .95);
+      --glass: rgba(208, 160, 48, .06);
+      --glass-brd: rgba(208, 160, 48, .25);
+      --line: rgba(138, 106, 32, .3);
+      --line-brt: #d0a030;
+      --ink: #f0d890;
+      --ink-dim: #b09050;
+      --ink-faint: #705a30;
+      --accent: #d0a030;
+      --accent-brt: #f0c860;
+      --accent-glow: rgba(208, 160, 48, .5);
+      --warn: #f0c860;
+      --danger: #c04030;
+      --ok: #609020;
+      --info: #8a7020;
+      --grad: linear-gradient(135deg, #f0c860 0%, #8a6a20 100%);
+      --font: 'Georgia', serif;
+      --mono: 'Courier New', monospace;
+      --r: 6px;
+      --r-lg: 10px;
+      --shadow: 0 8px 32px rgba(208, 160, 48, .2);
+      --bg-img: radial-gradient(ellipse at 50% 0%, #1a1208 0%, #0a0805 70%)
+    }
+
+    [data-theme="dracula"] {
+      --bg: #282a36;
+      --bg2: #21222c;
+      --bg3: #1e1f29;
+      --panel: rgba(52, 55, 70, .85);
+      --panel2: rgba(60, 63, 82, .9);
+      --panel3: rgba(68, 71, 90, .95);
+      --glass: rgba(189, 147, 249, .05);
+      --glass-brd: rgba(189, 147, 249, .2);
+      --line: rgba(74, 77, 96, .6);
+      --line-brt: #bd93f9;
+      --ink: #f8f8f2;
+      --ink-dim: #b0b0c0;
+      --ink-faint: #6272a4;
+      --accent: #bd93f9;
+      --accent-brt: #d8b0ff;
+      --accent-glow: rgba(189, 147, 249, .5);
+      --warn: #f1fa8c;
+      --danger: #ff5555;
+      --ok: #50fa7b;
+      --info: #8be9fd;
+      --grad: linear-gradient(135deg, #bd93f9 0%, #6272a4 100%);
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --r: 10px;
+      --r-lg: 16px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, .5);
+      --bg-img: none
+    }
+
+    [data-theme="nord"] {
+      --bg: #2e3440;
+      --bg2: #272b35;
+      --bg3: #222630;
+      --panel: rgba(59, 66, 82, .85);
+      --panel2: rgba(67, 76, 94, .9);
+      --panel3: rgba(76, 86, 106, .95);
+      --glass: rgba(136, 192, 208, .05);
+      --glass-brd: rgba(136, 192, 208, .2);
+      --line: rgba(76, 86, 106, .6);
+      --line-brt: #88c0d0;
+      --ink: #eceff4;
+      --ink-dim: #d8dee9;
+      --ink-faint: #7a8698;
+      --accent: #88c0d0;
+      --accent-brt: #a8d8e8;
+      --accent-glow: rgba(136, 192, 208, .4);
+      --warn: #ebcb8b;
+      --danger: #bf616a;
+      --ok: #a3be8c;
+      --info: #8fbcbb;
+      --grad: linear-gradient(135deg, #88c0d0 0%, #5e81ac 100%);
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --r: 10px;
+      --r-lg: 16px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, .4);
+      --bg-img: none
+    }
+
+    [data-theme="bloodmoon"] {
+      --bg: #080000;
+      --bg2: #0e0404;
+      --bg3: #160808;
+      --panel: rgba(22, 8, 8, .85);
+      --panel2: rgba(32, 12, 12, .9);
+      --panel3: rgba(40, 16, 16, .95);
+      --glass: rgba(192, 32, 32, .06);
+      --glass-brd: rgba(192, 32, 32, .3);
+      --line: rgba(58, 20, 20, .5);
+      --line-brt: #ff3030;
+      --ink: #ffe0e0;
+      --ink-dim: #c08080;
+      --ink-faint: #804040;
+      --accent: #ff3030;
+      --accent-brt: #ff6060;
+      --accent-glow: rgba(255, 48, 48, .7);
+      --warn: #ffa040;
+      --danger: #ff2020;
+      --ok: #60a060;
+      --info: #ff6060;
+      --grad: linear-gradient(135deg, #ff3030 0%, #800000 100%);
+      --font: 'Cinzel', serif;
+      --mono: 'Courier New', monospace;
+      --r: 4px;
+      --r-lg: 8px;
+      --shadow: 0 8px 32px rgba(255, 48, 48, .3);
+      --bg-img: radial-gradient(ellipse at 50% 0%, #5a0808 0%, #080000 60%)
+    }
+
+    [data-theme="ocean"] {
+      --bg: #001a2a;
+      --bg2: #002a3f;
+      --bg3: #003a55;
+      --panel: rgba(0, 42, 63, .85);
+      --panel2: rgba(0, 58, 85, .9);
+      --panel3: rgba(0, 74, 105, .95);
+      --glass: rgba(0, 168, 208, .06);
+      --glass-brd: rgba(0, 168, 208, .25);
+      --line: rgba(0, 120, 160, .3);
+      --line-brt: #00c8e0;
+      --ink: #c0e8f0;
+      --ink-dim: #80b8c8;
+      --ink-faint: #408090;
+      --accent: #00c8e0;
+      --accent-brt: #40e8f0;
+      --accent-glow: rgba(0, 200, 224, .5);
+      --warn: #f0c840;
+      --danger: #e05060;
+      --ok: #20d080;
+      --info: #40c8e0;
+      --grad: linear-gradient(135deg, #00c8e0 0%, #006a80 100%);
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --r: 10px;
+      --r-lg: 14px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, .5);
+      --bg-img: radial-gradient(ellipse at 50% 0%, #005a80 0%, #001a2a 70%)
+    }
+
+    [data-theme="sunset"] {
+      --bg: #2a0a1a;
+      --bg2: #3f0f2a;
+      --bg3: #5a1540;
+      --panel: rgba(63, 15, 42, .85);
+      --panel2: rgba(90, 21, 64, .9);
+      --panel3: rgba(120, 30, 85, .95);
+      --glass: rgba(255, 107, 61, .08);
+      --glass-brd: rgba(255, 107, 61, .3);
+      --line: rgba(255, 107, 61, .3);
+      --line-brt: #ff8a5c;
+      --ink: #ffe0d0;
+      --ink-dim: #ffb090;
+      --ink-faint: #c08060;
+      --accent: #ff6b3d;
+      --accent-brt: #ff8a5c;
+      --accent-glow: rgba(255, 107, 61, .6);
+      --warn: #ffc840;
+      --danger: #ff3d5a;
+      --ok: #40d080;
+      --info: #ff8a5c;
+      --grad: linear-gradient(135deg, #ff6b3d 0%, #a02515 100%);
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --r: 12px;
+      --r-lg: 18px;
+      --shadow: 0 8px 32px rgba(255, 107, 61, .3);
+      --bg-img: radial-gradient(ellipse at 50% 100%, #ff6b3d 0%, #ff3d6b 20%, #3f0f2a 60%)
+    }
+
+    [data-theme="forest"] {
+      --bg: #0a1a0a;
+      --bg2: #0f240f;
+      --bg3: #153215;
+      --panel: rgba(20, 45, 20, .85);
+      --panel2: rgba(28, 60, 28, .9);
+      --panel3: rgba(36, 75, 36, .95);
+      --glass: rgba(90, 160, 80, .05);
+      --glass-brd: rgba(90, 160, 80, .2);
+      --line: rgba(60, 120, 60, .4);
+      --line-brt: #80b060;
+      --ink: #d0e8c0;
+      --ink-dim: #90b080;
+      --ink-faint: #507050;
+      --accent: #80b060;
+      --accent-brt: #a0d080;
+      --accent-glow: rgba(128, 176, 96, .5);
+      --warn: #e0c060;
+      --danger: #c04040;
+      --ok: #80b060;
+      --info: #60a0a0;
+      --grad: linear-gradient(135deg, #a0d080 0%, #4a7028 100%);
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --r: 10px;
+      --r-lg: 14px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, .5);
+      --bg-img: radial-gradient(ellipse at 50% 0%, #1a3a1a 0%, #0a1a0a 70%)
+    }
+
+    [data-theme="glass"] {
+      --bg: #1a1a2e;
+      --bg2: #16213e;
+      --bg3: #0f3460;
+      --panel: rgba(255, 255, 255, .06);
+      --panel2: rgba(255, 255, 255, .1);
+      --panel3: rgba(255, 255, 255, .15);
+      --glass: rgba(255, 255, 255, .08);
+      --glass-brd: rgba(255, 255, 255, .2);
+      --line: rgba(255, 255, 255, .15);
+      --line-brt: rgba(255, 255, 255, .4);
+      --ink: #fff;
+      --ink-dim: #c0c0d0;
+      --ink-faint: #8080a0;
+      --accent: #ff60c8;
+      --accent-brt: #ff8ad8;
+      --accent-glow: rgba(255, 96, 200, .5);
+      --warn: #ffc860;
+      --danger: #ff5050;
+      --ok: #50ffa0;
+      --info: #60c8ff;
+      --grad: linear-gradient(135deg, #ff60c8 0%, #6050ff 100%);
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --r: 16px;
+      --r-lg: 24px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, .4);
+      --bg-img: radial-gradient(circle at 20% 30%, rgba(255, 100, 200, .3) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(100, 150, 255, .3) 0%, transparent 40%), linear-gradient(135deg, #1a1a2e, #0f3460)
+    }
+
+    [data-theme="neon"] {
+      --bg: #050510;
+      --bg2: #0a0a20;
+      --bg3: #101030;
+      --panel: rgba(16, 16, 48, .85);
+      --panel2: rgba(24, 24, 72, .9);
+      --panel3: rgba(32, 32, 96, .95);
+      --glass: rgba(0, 255, 255, .06);
+      --glass-brd: rgba(0, 255, 255, .3);
+      --line: rgba(0, 180, 255, .3);
+      --line-brt: #00ffff;
+      --ink: #c0ffff;
+      --ink-dim: #6090c0;
+      --ink-faint: #305080;
+      --accent: #00ffff;
+      --accent-brt: #60ffff;
+      --accent-glow: rgba(0, 255, 255, .7);
+      --warn: #ffff00;
+      --danger: #ff00ff;
+      --ok: #00ff80;
+      --info: #00ffff;
+      --grad: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
+      --font: 'Consolas', monospace;
+      --mono: 'Consolas', monospace;
+      --r: 4px;
+      --r-lg: 8px;
+      --shadow: 0 0 30px rgba(0, 255, 255, .4);
+      --bg-img: radial-gradient(circle at 50% 0%, #2020a0 0%, #050510 60%)
+    }
+
+    [data-theme="arctic"] {
+      --bg: #e8f0f8;
+      --bg2: #dce8f4;
+      --bg3: #d0e0f0;
+      --panel: rgba(255, 255, 255, .85);
+      --panel2: rgba(240, 246, 252, .9);
+      --panel3: rgba(224, 236, 248, .95);
+      --glass: rgba(32, 128, 192, .04);
+      --glass-brd: rgba(32, 128, 192, .12);
+      --line: #c0d8ec;
+      --line-brt: #4090d0;
+      --ink: #0a2038;
+      --ink-dim: #4a6a88;
+      --ink-faint: #8aa8c0;
+      --accent: #2080c0;
+      --accent-brt: #40a0e0;
+      --accent-glow: rgba(32, 128, 192, .3);
+      --warn: #c08020;
+      --danger: #d04050;
+      --ok: #208060;
+      --info: #20a0b0;
+      --grad: linear-gradient(135deg, #40a0e0 0%, #2080c0 100%);
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --r: 10px;
+      --r-lg: 16px;
+      --shadow: 0 8px 32px rgba(32, 128, 192, .15);
+      --bg-img: radial-gradient(ellipse at 50% 0%, #f0f8ff 0%, #d8e8f8 70%)
+    }
+
+    [data-theme="vintage"] {
+      --bg: #e8dcc0;
+      --bg2: #ddd0b0;
+      --bg3: #d0c0a0;
+      --panel: rgba(240, 230, 208, .9);
+      --panel2: rgba(245, 236, 216, .95);
+      --panel3: rgba(232, 220, 192, .95);
+      --glass: rgba(138, 106, 48, .05);
+      --glass-brd: rgba(138, 106, 48, .2);
+      --line: #c0a880;
+      --line-brt: #8a6a30;
+      --ink: #2a1a0a;
+      --ink-dim: #6a5030;
+      --ink-faint: #a08860;
+      --accent: #8a6a30;
+      --accent-brt: #b08840;
+      --accent-glow: rgba(138, 106, 48, .3);
+      --warn: #c08030;
+      --danger: #a03020;
+      --ok: #4a6830;
+      --info: #607040;
+      --grad: linear-gradient(135deg, #b08840 0%, #8a6a30 100%);
+      --font: 'Georgia', serif;
+      --mono: 'Courier New', monospace;
+      --r: 6px;
+      --r-lg: 10px;
+      --shadow: 0 8px 32px rgba(138, 106, 48, .2);
+      --bg-img: radial-gradient(ellipse at 50% 0%, #f5e8c8 0%, #e8dcc0 70%)
+    }
+
+    :root {
+      --safe-t: env(safe-area-inset-top, 0px);
+      --safe-b: env(safe-area-inset-bottom, 0px)
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none
+    }
+
+    html {
+      height: 100%;
+      -webkit-text-size-adjust: 100%;
+      overflow: hidden;
+      overscroll-behavior: none;
+      position: fixed;
+      width: 100%
+    }
+
+    body {
+      height: 100%;
+      width: 100%;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font);
+      overflow: hidden;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+      overscroll-behavior: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      touch-action: manipulation
+    }
+
+    body {
+      background-image: var(--bg-img, none);
+      background-attachment: fixed;
+      padding-top: var(--safe-t);
+      padding-bottom: var(--safe-b);
+      transition: background .3s, color .3s
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--bg)
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--line-brt);
+      border-radius: 2px
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+      font-size: inherit;
+      color: inherit;
+      -webkit-appearance: none;
+      appearance: none
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none
+    }
+
+    input,
+    select,
+    textarea {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      padding: .75em 1em;
+      border-radius: var(--r);
+      width: 100%;
+      font-size: 16px;
+      transition: border .2s
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow)
+    }
+
+    label {
+      font-size: 11px;
+      letter-spacing: .06em;
+      color: var(--ink-dim);
+      display: block;
+      margin-bottom: .4em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+      font-weight: 500
+    }
+
+    .field {
+      margin-bottom: 1em
+    }
+
+    .btn {
+      background: var(--grad);
+      color: #fff;
+      border: 1px solid var(--line-brt);
+      padding: .75em 1.3em;
+      border-radius: var(--r);
+      font-weight: 600;
+      font-size: 12.5px;
+      font-family: var(--font);
+      transition: all .15s;
+      box-shadow: 0 4px 16px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, .15);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: .4em;
+      justify-content: center;
+      min-height: 44px;
+      user-select: none;
+      -webkit-user-select: none
+    }
+
+    .btn:active {
+      transform: scale(.96);
+      filter: brightness(1.1)
+    }
+
+    .btn.ghost {
+      background: var(--glass);
+      border: 1px solid var(--glass-brd);
+      color: var(--ink-dim);
+      box-shadow: none
+    }
+
+    .btn.ghost:active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--panel2)
+    }
+
+    .btn.danger {
+      background: linear-gradient(135deg, var(--danger) 0%, #800000 100%);
+      border-color: var(--danger)
+    }
+
+    .btn.warn {
+      background: linear-gradient(135deg, var(--warn) 0%, #8a6a20 100%);
+      border-color: var(--warn);
+      color: var(--bg)
+    }
+
+    .btn:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      transform: none !important
+    }
+
+    .btn.sm {
+      padding: .5em .9em;
+      font-size: 11px;
+      min-height: 36px
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: .05em;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: .28em .65em;
+      border-radius: var(--r);
+      font-family: var(--mono);
+      display: inline-block;
+      background: var(--glass);
+      white-space: nowrap
+    }
+
+    .tag.ok {
+      color: var(--ok);
+      border-color: var(--ok);
+      background: rgba(107, 143, 90, .1)
+    }
+
+    .tag.warn {
+      color: var(--warn);
+      border-color: var(--warn);
+      background: rgba(232, 185, 92, .1)
+    }
+
+    .tag.danger {
+      color: var(--danger);
+      border-color: var(--danger);
+      background: rgba(217, 74, 58, .1)
+    }
+
+    .tag.info {
+      color: var(--info);
+      border-color: var(--info);
+      background: rgba(90, 154, 200, .1)
+    }
+
+    .hidden {
+      display: none !important
+    }
+
+    .small {
+      font-size: 12px;
+      color: var(--ink-dim);
+      line-height: 1.6
+    }
+
+    .err {
+      color: var(--danger);
+      font-size: 12px;
+      min-height: 1.3em;
+      font-family: var(--mono)
+    }
+
+    .mono {
+      font-family: var(--mono)
+    }
+
+    /* ============ WELCOME SCREEN (bosh ekran) ============ */
+    #welcome {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(ellipse at center, #1a1e12 0%, #06070a 70%);
+      padding: 2em;
+      text-align: center;
+      transition: opacity .5s, transform .5s
+    }
+
+    #welcome.hide {
+      opacity: 0;
+      transform: scale(1.1);
+      pointer-events: none
+    }
+
+    .welcome-logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #9bb26a 0%, #5c6b47 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      font-weight: 900;
+      font-family: var(--mono);
+      color: #fff;
+      box-shadow: 0 0 60px rgba(155, 178, 106, .5), inset 0 2px 0 rgba(255, 255, 255, .3);
+      margin-bottom: 1.5em;
+      animation: welcomePulse 2s infinite ease-in-out
+    }
+
+    @keyframes welcomePulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 60px rgba(155, 178, 106, .5), inset 0 2px 0 rgba(255, 255, 255, .3);
+        transform: scale(1)
+      }
+
+      50% {
+        box-shadow: 0 0 90px rgba(155, 178, 106, .8), inset 0 2px 0 rgba(255, 255, 255, .4);
+        transform: scale(1.05)
+      }
+    }
+
+    .welcome-title {
+      font-family: var(--mono);
+      font-size: 2.2rem;
+      letter-spacing: .35em;
+      font-weight: 900;
+      background: linear-gradient(135deg, #9bb26a 0%, #c4dc8e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: .5em
+    }
+
+    .welcome-sub {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .35em;
+      color: var(--accent);
+      margin-bottom: 2.5em
+    }
+
+    .welcome-btn {
+      padding: 1.1em 2.5em;
+      background: linear-gradient(135deg, #9bb26a 0%, #5c6b47 100%);
+      color: #fff;
+      border: 2px solid #c4dc8e;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 14px;
+      font-family: var(--mono);
+      letter-spacing: .15em;
+      box-shadow: 0 8px 32px rgba(155, 178, 106, .6), inset 0 2px 0 rgba(255, 255, 255, .3);
+      cursor: pointer;
+      transition: all .25s;
+      display: inline-flex;
+      align-items: center;
+      gap: .6em;
+      min-height: 56px;
+      user-select: none;
+      -webkit-user-select: none
+    }
+
+    .welcome-btn:active {
+      transform: scale(.94);
+      box-shadow: 0 4px 16px rgba(155, 178, 106, .4)
+    }
+
+    .welcome-info {
+      margin-top: 2.5em;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--ink-faint);
+      letter-spacing: .15em;
+      line-height: 2
+    }
+
+    .welcome-info .row {
+      display: flex;
+      gap: 1.5em;
+      justify-content: center
+    }
+
+    .welcome-info .row span::before {
+      content: '● ';
+      color: var(--ok)
+    }
+
+    /* ============ TITLEBAR ============ */
+    .titlebar {
+      height: calc(38px + var(--safe-t));
+      background: var(--panel);
+      border-bottom: 1px solid var(--glass-brd);
+      display: flex;
+      align-items: center;
+      padding: var(--safe-t) 12px 0;
+      font-family: var(--font);
+      font-size: 11.5px;
+      color: var(--ink-dim);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px)
+    }
+
+    .titlebar .tb-logo {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 12px;
+      margin-right: 10px;
+      flex-shrink: 0
+    }
+
+    .titlebar .tb-title {
+      color: var(--ink);
+      font-weight: 700;
+      letter-spacing: .1em
+    }
+
+    .titlebar .tb-sub {
+      color: var(--ink-faint);
+      margin-left: 8px;
+      font-size: 10.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .titlebar .tb-status {
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-shrink: 0
+    }
+
+    .titlebar .tb-status .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 6px var(--ok);
+      display: inline-block;
+      margin-right: 4px
+    }
+
+    /* ============ GATE ============ */
+    #gate {
+      position: fixed;
+      top: calc(38px + var(--safe-t));
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2em 1em calc(2em + var(--safe-b));
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain
+    }
+
+    .gate-card {
+      width: 100%;
+      max-width: 460px;
+      background: var(--panel);
+      border: 1px solid var(--glass-brd);
+      border-radius: var(--r-lg);
+      padding: 2em 1.6em;
+      position: relative;
+      box-shadow: var(--shadow), 0 0 60px var(--accent-glow);
+      margin: auto 0
+    }
+
+    .gate-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--grad);
+      border-radius: var(--r-lg) var(--r-lg) 0 0
+    }
+
+    .gate-card::after {
+      content: '▮ KRIPTEKS v6.0 ▮';
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg);
+      padding: 0 12px;
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .3em;
+      color: var(--accent);
+      border: 1px solid var(--glass-brd);
+      border-radius: var(--r);
+      white-space: nowrap
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 1.6em
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: .35em;
+      font-weight: 900;
+      font-family: var(--mono);
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 16px var(--accent-glow))
+    }
+
+    .brand p {
+      margin: .6em 0 0;
+      font-size: 10px;
+      letter-spacing: .3em;
+      color: var(--accent);
+      font-family: var(--mono)
+    }
+
+    .brand .subline {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1em
+    }
+
+    .brand .subline span {
+      width: 24px;
+      height: 2px;
+      background: var(--line-brt);
+      border-radius: 2px
+    }
+
+    .brand .subline span.on {
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow)
+    }
+
+    .status-line {
+      display: flex;
+      justify-content: center;
+      gap: 1.4em;
+      margin-top: 1.4em;
+      padding-top: 1.2em;
+      border-top: 1px solid var(--line);
+      flex-wrap: wrap
+    }
+
+    .status-line span {
+      font-size: 10px;
+      letter-spacing: .15em;
+      color: var(--ink-dim);
+      font-family: var(--mono)
+    }
+
+    .status-line span::before {
+      content: '● ';
+      color: var(--ok)
+    }
+
+    .lockbadge {
+      text-align: center;
+      margin: 1.2em 0;
+      font-size: 10.5px;
+      letter-spacing: .18em;
+      color: var(--warn);
+      border: 1px dashed var(--warn);
+      padding: .75em;
+      font-family: var(--mono);
+      background: rgba(232, 185, 92, .05);
+      border-radius: var(--r)
+    }
+
+    .boot-log {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--ink-faint);
+      line-height: 1.7;
+      max-height: 100px;
+      overflow-y: auto;
+      padding: .8em;
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      margin-top: 1.2em;
+      -webkit-overflow-scrolling: touch
+    }
+
+    .boot-log .ok {
+      color: var(--ok)
+    }
+
+    .boot-log .warn {
+      color: var(--warn)
+    }
+
+    .boot-log .err {
+      color: var(--danger)
+    }
+
+    /* ============ APP ============ */
+    #app {
+      display: none;
+      position: fixed;
+      top: calc(38px + var(--safe-t));
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: calc(100vh - 38px - var(--safe-t) - var(--safe-b));
+      height: calc(100dvh - 38px - var(--safe-t) - var(--safe-b));
+      padding-bottom: var(--safe-b);
+      grid-template-columns: 240px 1fr;
+      grid-template-rows: minmax(0, 1fr);
+      overflow: hidden
+    }
+
+    #app.active {
+      display: grid
+    }
+
+    #sidebar {
+      background: var(--panel);
+      border-right: 1px solid var(--glass-brd);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 0;
+      min-width: 0
+    }
+
+    .side-brand {
+      padding: 1em 1.2em;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel2)
+    }
+
+    .side-brand b {
+      letter-spacing: .3em;
+      font-size: 1rem;
+      font-family: var(--mono);
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900
+    }
+
+    .side-brand .sub {
+      font-size: 9px;
+      color: var(--ink-faint);
+      font-family: var(--mono);
+      letter-spacing: .15em;
+      margin-top: 3px;
+      display: flex;
+      justify-content: space-between
+    }
+
+    .side-user {
+      padding: .8em 1.2em;
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--ink-dim);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .side-user .avatar {
+      width: 28px;
+      height: 28px;
+      background: var(--grad);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 12px;
+      flex-shrink: 0;
+      position: relative
+    }
+
+    .side-user .avatar::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 9px;
+      height: 9px;
+      background: var(--ok);
+      border-radius: 50%;
+      border: 2px solid var(--panel)
+    }
+
+    .side-user .uname {
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 12px
+    }
+
+    .side-user .usession {
+      font-size: 9.5px;
+      color: var(--ink-faint)
+    }
+
+    .navgroup-label {
+      padding: .9em 1.2em .3em;
+      font-size: 9.5px;
+      letter-spacing: .2em;
+      color: var(--ink-faint);
+      font-family: var(--mono);
+      font-weight: 700;
+      border-top: 1px solid var(--line);
+      margin-top: .4em
+    }
+
+    .navgroup-label:first-of-type {
+      border-top: none;
+      margin-top: 0
+    }
+
+    .navitem {
+      display: flex;
+      align-items: center;
+      gap: .7em;
+      padding: .65em 1.2em;
+      color: var(--ink-dim);
+      font-size: 13px;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+      transition: all .15s;
+      font-family: var(--font);
+      min-height: 46px;
+      user-select: none;
+      -webkit-user-select: none
+    }
+
+    .navitem:active {
+      background: var(--panel2);
+      color: var(--ink)
+    }
+
+    .navitem.active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: linear-gradient(90deg, var(--glass), transparent);
+      font-weight: 600
+    }
+
+    .navicon {
+      width: 22px;
+      text-align: center;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0
+    }
+
+    .navlabel {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .navbadge {
+      margin-left: auto;
+      font-size: 9px;
+      background: var(--grad);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-family: var(--mono);
+      font-weight: 700;
+      flex-shrink: 0
+    }
+
+    .side-footer {
+      margin-top: auto;
+      padding: .8em 1.2em;
+      border-top: 1px solid var(--line);
+      font-size: 9.5px;
+      font-family: var(--mono);
+      color: var(--ink-faint);
+      background: linear-gradient(180deg, transparent, var(--panel2))
+    }
+
+    .side-footer .row2 {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4px;
+      padding: 1px 0
+    }
+
+    #main {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 0;
+      min-width: 0;
+      position: relative;
+      touch-action: pan-y;
+      overflow-x: hidden
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .8em 1.2em;
+      border-bottom: 1px solid var(--glass-brd);
+      background: var(--panel);
+      flex-wrap: wrap;
+      gap: .5em;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px)
+    }
+
+    .topbar h2 {
+      margin: 0;
+      font-size: 1rem;
+      letter-spacing: .08em;
+      font-family: var(--font);
+      color: var(--ink);
+      text-transform: uppercase;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: .5em
+    }
+
+    .topbar h2::before {
+      content: '▸';
+      color: var(--accent);
+      font-size: 1.2rem
+    }
+
+    .session {
+      display: flex;
+      gap: .5em;
+      align-items: center;
+      font-size: 11px;
+      color: var(--ink-dim);
+      font-family: var(--mono);
+      flex-wrap: wrap
+    }
+
+    .session-stat {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: .35em .65em;
+      background: var(--glass);
+      border: 1px solid var(--glass-brd);
+      border-radius: var(--r);
+      transition: all .2s
+    }
+
+    .session-stat .ico {
+      font-size: 12px
+    }
+
+    #page-body {
+      padding: 1.1em;
+      flex: 1;
+      min-height: 0;
+      overflow-x: hidden;
+      width: 100%
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: .85em
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--glass-brd);
+      border-radius: var(--r-lg);
+      padding: 1.05em;
+      position: relative;
+      transition: all .2s;
+      overflow: hidden
+    }
+
+    .card.clickable {
+      cursor: pointer
+    }
+
+    .card.clickable:active {
+      transform: scale(.98);
+      background: var(--panel2)
+    }
+
+    .card h3 {
+      margin: 0 0 .5em;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      font-family: var(--mono);
+      font-weight: 600
+    }
+
+    .card .num {
+      font-size: 2rem;
+      font-weight: 900;
+      font-family: var(--mono);
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1
+    }
+
+    .card .card-icon {
+      position: absolute;
+      top: .9em;
+      right: .9em;
+      font-size: 1.5rem;
+      opacity: .18;
+      transition: all .3s
+    }
+
+    .card.alert {
+      border-left: 3px solid var(--danger)
+    }
+
+    .card.warn {
+      border-left: 3px solid var(--warn)
+    }
+
+    .card.ok {
+      border-left: 3px solid var(--ok)
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--glass-brd);
+      border-radius: var(--r-lg);
+      padding: 1.15em;
+      margin-bottom: 1em;
+      position: relative
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: .7em;
+      margin-bottom: .9em;
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+      gap: .5em
+    }
+
+    .panel-head h3 {
+      margin: 0;
+      font-size: 11.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: .5em;
+      flex-wrap: wrap
+    }
+
+    .entry {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--r);
+      padding: .85em 1em;
+      margin-bottom: .5em;
+      display: flex;
+      justify-content: space-between;
+      gap: .9em;
+      transition: all .2s;
+      position: relative
+    }
+
+    .entry:active {
+      background: var(--panel3)
+    }
+
+    .entry .meta {
+      font-size: 10.5px;
+      color: var(--ink-faint);
+      margin-top: .35em;
+      font-family: var(--mono);
+      display: flex;
+      align-items: center;
+      gap: .5em;
+      flex-wrap: wrap;
+      word-break: break-word
+    }
+
+    .entry .entry-title {
+      font-size: 13.5px;
+      color: var(--ink);
+      font-weight: 600;
+      word-break: break-word;
+      display: flex;
+      align-items: center;
+      gap: .4em;
+      flex-wrap: wrap
+    }
+
+    .entry .actions {
+      display: flex;
+      gap: .3em;
+      flex-shrink: 0;
+      align-items: flex-start;
+      flex-wrap: wrap
+    }
+
+    .iconbtn {
+      background: var(--glass);
+      border: 1px solid var(--glass-brd);
+      color: var(--ink-dim);
+      border-radius: var(--r);
+      width: 38px;
+      height: 38px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .15s;
+      cursor: pointer;
+      flex-shrink: 0;
+      user-select: none
+    }
+
+    .iconbtn:active {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--panel2);
+      transform: scale(.92)
+    }
+
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .85);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 200;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 0;
+      animation: fadeIn .2s
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .modal {
+      background: var(--panel);
+      border: 1px solid var(--glass-brd);
+      border-radius: var(--r-lg) var(--r-lg) 0 0;
+      padding: 1.3em;
+      width: 100%;
+      max-width: 600px;
+      max-height: 92vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      box-shadow: var(--shadow);
+      position: relative;
+      padding-bottom: calc(1.3em + var(--safe-b));
+      animation: slideUp .25s
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1
+      }
+    }
+
+    .modal::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--grad);
+      border-radius: var(--r-lg) var(--r-lg) 0 0
+    }
+
+    .modal h3 {
+      margin: 0 0 1.1em;
+      font-size: 13px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: .5em
+    }
+
+    .row {
+      display: flex;
+      gap: .6em
+    }
+
+    .row>* {
+      flex: 1
+    }
+
+    .empty {
+      color: var(--ink-faint);
+      font-size: 12px;
+      padding: 2.5em 1.5em;
+      text-align: center;
+      border: 2px dashed var(--line);
+      font-family: var(--mono);
+      border-radius: var(--r-lg);
+      background: var(--glass)
+    }
+
+    #toasts {
+      position: fixed;
+      top: calc(50px + var(--safe-t));
+      right: 14px;
+      left: 14px;
+      z-index: 500;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+      align-items: flex-end
+    }
+
+    .toast {
+      background: var(--panel);
+      border: 1px solid var(--glass-brd);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--r);
+      padding: .8em 1.1em;
+      font-size: 12.5px;
+      color: var(--ink);
+      box-shadow: var(--shadow);
+      animation: toastIn .3s;
+      max-width: calc(100% - 28px);
+      word-break: break-word
+    }
+
+    .toast.err {
+      border-left-color: var(--danger);
+      color: var(--danger)
+    }
+
+    .toast.warn {
+      border-left-color: var(--warn);
+      color: var(--warn)
+    }
+
+    .toast.ok {
+      border-left-color: var(--ok)
+    }
+
+    @keyframes toastIn {
+      from {
+        transform: translateX(120%);
+        opacity: 0
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1
+      }
+    }
+
+    .fs-indicator {
+      position: fixed;
+      bottom: calc(70px + var(--safe-b));
+      right: 12px;
+      font-family: var(--mono);
+      font-size: 9.5px;
+      color: var(--ink-faint);
+      background: var(--panel);
+      border: 1px solid var(--glass-brd);
+      padding: 5px 10px;
+      z-index: 40;
+      border-radius: var(--r);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      opacity: .7
+    }
+
+    .fs-indicator::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--ink-faint)
+    }
+
+    .fs-indicator.ok {
+      color: var(--ok);
+      border-color: var(--ok)
+    }
+
+    .fs-indicator.ok::before {
+      background: var(--ok);
+      box-shadow: 0 0 6px var(--ok)
+    }
+
+    .fs-indicator.warn {
+      color: var(--warn);
+      border-color: var(--warn)
+    }
+
+    .fs-indicator.warn::before {
+      background: var(--warn);
+      box-shadow: 0 0 6px var(--warn)
+    }
+
+    /* ============ MOBILE NAV — 15 ta bo'lim ============ */
+    #mobilenav {
+      display: none
+    }
+
+    @media (max-width:960px) {
+      #app.active {
+        display: block
+      }
+
+      #sidebar {
+        display: none
+      }
+
+      #main {
+        height: 100%;
+        padding-bottom: calc(70px + var(--safe-b))
+      }
+
+      #mobilenav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--panel);
+        border-top: 1px solid var(--glass-brd);
+        padding: .35em .25em calc(.35em + var(--safe-b));
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: .1em;
+        z-index: 50;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        scrollbar-width: none
+      }
+
+      #mobilenav::-webkit-scrollbar {
+        display: none
+      }
+
+      #mobilenav .navitem {
+        flex-direction: column;
+        font-size: 8.5px;
+        padding: .45em .55em;
+        border-left: none;
+        border-top: 3px solid transparent;
+        gap: .15em;
+        white-space: nowrap;
+        min-width: 58px;
+        text-align: center;
+        color: var(--ink-dim);
+        min-height: auto;
+        flex-shrink: 0
+      }
+
+      #mobilenav .navitem.active {
+        border-top-color: var(--accent);
+        border-left: none;
+        color: var(--accent);
+        background: transparent
+      }
+
+      #mobilenav .navicon {
+        font-size: 20px;
+        width: auto
+      }
+
+      #mobilenav .navlabel {
+        font-size: 9px;
+        flex: none;
+        white-space: nowrap;
+        max-width: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis
+      }
+    }
+
+    @media (max-width:600px) {
+      #page-body {
+        padding: .85em
+      }
+
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: .65em
+      }
+
+      .topbar {
+        padding: .65em .85em
+      }
+
+      .topbar h2 {
+        font-size: .9rem
+      }
+
+      .session-stat {
+        padding: .3em .55em;
+        font-size: 10px
+      }
+
+      .card {
+        padding: .85em
+      }
+
+      .card .num {
+        font-size: 1.6rem
+      }
+
+      .card h3 {
+        font-size: 10px
+      }
+
+      .panel {
+        padding: .95em
+      }
+
+      .panel-head h3 {
+        font-size: 10.5px
+      }
+
+      .entry {
+        padding: .7em .85em
+      }
+
+      .entry .entry-title {
+        font-size: 12.5px
+      }
+
+      .modal {
+        padding: 1.1em;
+        padding-bottom: calc(1.1em + var(--safe-b))
+      }
+
+      .iconbtn {
+        width: 36px;
+        height: 36px
+      }
+    }
+
+    @media (max-width:400px) {
+      .grid {
+        grid-template-columns: 1fr
+      }
+
+      #mobilenav .navitem {
+        min-width: 54px;
+        padding: .4em .5em
+      }
+
+      #mobilenav .navlabel {
+        font-size: 8px;
+        max-width: 52px
+      }
+    }
+
+    .chip {
+      padding: .45em .9em;
+      background: var(--glass);
+      border: 1px solid var(--glass-brd);
+      border-radius: 20px;
+      font-size: 11px;
+      font-family: var(--mono);
+      cursor: pointer;
+      transition: all .2s;
+      color: var(--ink-dim);
+      display: inline-block;
+      user-select: none
+    }
+
+    .chip:active {
+      transform: scale(.95)
+    }
+
+    .chip.active {
+      background: var(--grad);
+      color: #fff;
+      border-color: var(--accent)
+    }
+
+    .filter-chips {
+      display: flex;
+      gap: .4em;
+      flex-wrap: wrap;
+      margin-bottom: 1em;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: .2em
+    }
+
+    .kpi-value {
+      font-size: 1.8rem;
+      font-weight: 900;
+      font-family: var(--mono);
+      line-height: 1;
+      word-break: break-word
+    }
+
+    .transaction {
+      display: flex;
+      align-items: center;
+      gap: .8em;
+      padding: .75em;
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      margin-bottom: .5em;
+      transition: all .2s
+    }
+
+    .transaction.income {
+      border-left: 3px solid var(--ok)
+    }
+
+    .transaction.expense {
+      border-left: 3px solid var(--danger)
+    }
+
+    .transaction-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      background: var(--glass);
+      border: 1px solid var(--glass-brd);
+      flex-shrink: 0
+    }
+
+    .transaction-info {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden
+    }
+
+    .transaction-info div {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .transaction-amount {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap
+    }
+
+    .transaction-amount.income {
+      color: var(--ok)
+    }
+
+    .transaction-amount.expense {
+      color: var(--danger)
+    }
+
+    .schedule-grid {
+      display: grid;
+      gap: 3px
+    }
+
+    .schedule-cell {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: .5em;
+      min-height: 64px;
+      font-size: 10.5px
+    }
+
+    .schedule-cell.header {
+      background: var(--grad);
+      color: #fff;
+      font-weight: 700;
+      text-align: center;
+      min-height: auto;
+      padding: .45em;
+      font-family: var(--mono);
+      font-size: 10px
+    }
+
+    .schedule-cell.lesson {
+      background: linear-gradient(135deg, var(--glass), transparent);
+      border-left: 3px solid var(--accent)
+    }
+
+    .team-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--grad);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 900;
+      font-size: 18px;
+      flex-shrink: 0;
+      overflow: hidden
+    }
+
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: .6em
+    }
+
+    .media-item {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: .35em;
+      position: relative;
+      transition: all .2s;
+      cursor: pointer;
+      overflow: hidden;
+      user-select: none
+    }
+
+    .media-item:active {
+      transform: scale(.97);
+      border-color: var(--accent)
+    }
+
+    .media-item img,
+    .media-item video {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: var(--r);
+      display: block;
+      background: #000
+    }
+
+    .media-item .media-title {
+      font-size: 9.5px;
+      font-family: var(--mono);
+      margin-top: .4em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--ink-dim)
+    }
+
+    .media-item .media-del {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 28px;
+      height: 28px;
+      font-size: 12px;
+      background: rgba(0, 0, 0, .75);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(4px)
+    }
+
+    .image-preview-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .97);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1em;
+      touch-action: pan-y
+    }
+
+    .image-preview-bg img,
+    .image-preview-bg video {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: var(--r);
+      box-shadow: 0 0 60px rgba(0, 0, 0, .8);
+      object-fit: contain
+    }
+
+    .image-preview-info {
+      position: absolute;
+      bottom: calc(2em + var(--safe-b));
+      left: 1em;
+      right: 1em;
+      color: #fff;
+      font-family: var(--mono);
+      font-size: 12px;
+      background: rgba(0, 0, 0, .7);
+      padding: .6em 1em;
+      border-radius: var(--r);
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .image-preview-close {
+      position: fixed;
+      top: calc(1em + var(--safe-t));
+      right: 1em;
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, .15);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1001
+    }
+
+    .image-preview-close:active {
+      background: var(--danger);
+      transform: scale(.92)
+    }
+
+    .audio-item {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: .85em;
+      margin-bottom: .5em;
+      display: flex;
+      flex-direction: column;
+      gap: .6em
+    }
+
+    .audio-item .audio-info {
+      flex: 1;
+      min-width: 0;
+      width: 100%
+    }
+
+    .audio-item .audio-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: .4em;
+      margin-bottom: .3em;
+      flex-wrap: wrap;
+      word-break: break-word
+    }
+
+    .audio-item audio {
+      width: 100%;
+      margin-top: .4em;
+      border-radius: var(--r);
+      height: 40px
+    }
+
+    .audio-format {
+      font-size: 9px;
+      padding: .15em .5em;
+      background: var(--glass);
+      border: 1px solid var(--glass-brd);
+      border-radius: 6px;
+      font-family: var(--mono);
+      color: var(--accent);
+      flex-shrink: 0
+    }
+
+    .audio-actions {
+      display: flex;
+      gap: .4em;
+      justify-content: flex-end
+    }
+
+    @media (min-width:768px) {
+      .audio-item {
+        flex-direction: row;
+        align-items: center
+      }
+
+      .audio-actions {
+        flex-direction: column
+      }
+    }
+
+    .goal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1em
+    }
+
+    @media (max-width:600px) {
+      .goal-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: .65em
+      }
+    }
+
+    .goal-card {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: all .25s;
+      position: relative;
+      user-select: none
+    }
+
+    .goal-card:active {
+      transform: scale(.98)
+    }
+
+    .goal-image {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      background: linear-gradient(135deg, var(--panel3), var(--panel2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: var(--ink-faint);
+      overflow: hidden
+    }
+
+    .goal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .goal-body {
+      padding: .9em
+    }
+
+    .goal-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: .4em;
+      word-break: break-word
+    }
+
+    .goal-price {
+      font-size: 1.2rem;
+      font-weight: 900;
+      font-family: var(--mono);
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      word-break: break-word
+    }
+
+    .goal-meta {
+      font-size: 10.5px;
+      color: var(--ink-faint);
+      font-family: var(--mono);
+      margin-top: .6em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .5em;
+      flex-wrap: wrap
+    }
+
+    .goal-actions {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      gap: .3em;
+      opacity: 1
+    }
+
+    .goal-actions .iconbtn {
+      background: rgba(0, 0, 0, .7);
+      backdrop-filter: blur(10px);
+      border-color: rgba(255, 255, 255, .2);
+      color: #fff;
+      width: 34px;
+      height: 34px
+    }
+
+    /* Fullscreen button */
+    .fs-btn {
+      position: fixed;
+      top: calc(6px + var(--safe-t));
+      right: 8px;
+      width: 32px;
+      height: 32px;
+      background: var(--glass);
+      border: 1px solid var(--glass-brd);
+      border-radius: var(--r);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--ink-dim);
+      z-index: 200;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      user-select: none
+    }
+
+    .fs-btn:active {
+      color: var(--accent);
+      border-color: var(--accent)
+    }
+  </style>
+</head>
+
+<body data-theme="kripteks">
+
+  <!-- WELCOME SCREEN (bosh ekran) -->
+  <div id="welcome">
+    <div class="welcome-logo">K</div>
+    <div class="welcome-title">KRIPTEKS</div>
+    <div class="welcome-sub">SECURE PERSONAL ARCHIVE</div>
+    <button class="welcome-btn" id="welcome-enter">▶ KIRISH</button>
+    <div class="welcome-info">
+      <div class="row"><span>OFFLINE</span><span>ENCRYPTED</span><span>LOCAL</span></div>
+      <div style="margin-top:1em">v6.0 · AES-256-GCM · PBKDF2</div>
+    </div>
+  </div>
+
+  <!-- FULLSCREEN TUGMA -->
+  <div class="fs-btn" id="fs-toggle" title="To'liq ekran">⛶</div>
+
+  <!-- TITLEBAR -->
+  <div class="titlebar">
+    <div class="tb-logo">K</div>
+    <span class="tb-title">KRIPTEKS</span>
+    <span class="tb-sub" id="tb-sub">v6.0</span>
+    <div class="tb-status"><span class="mono"><span class="dot"></span>SECURE</span><span class="mono"
+        id="tb-clock">--:--</span></div>
+  </div>
+
+  <!-- GATE -->
+  <div id="gate" class="hidden">
+    <div class="gate-card">
+      <div class="brand">
+        <h1>KRIPTEKS</h1>
+        <p data-i="tagline">SECURE PERSONAL ARCHIVE</p>
+        <div class="subline"><span class="on"></span><span class="on"></span><span
+            class="on"></span><span></span><span></span></div>
+      </div>
+      <div id="view-setup">
+        <div class="lockbadge" data-i="setupBadge">◈ YANGI XAVFSIZ ARXIV YARATISH ◈</div>
+        <div class="field"><label data-i="lblPass1">Bosh parol</label><input type="password" id="s-pass1"
+            placeholder="Kamida 12 belgi"></div>
+        <div class="field"><label data-i="lblPass2">Ikkinchi maxfiy ibora</label><input type="password" id="s-pass2"
+            placeholder="Kamida 12 belgi"></div>
+        <div class="field"><label data-i="lblPass2c">Ikkinchi iborani tasdiqlang</label><input type="password"
+            id="s-pass2c"></div>
+        <div class="field"><label data-i="lblHint">Maslahat (ixtiyoriy)</label><input type="text" id="s-hint"></div>
+        <button class="btn ghost" style="width:100%;margin-bottom:.8em" id="btn-gen" type="button" data-i="btnGen">🎲
+          Kuchli parol</button>
+        <div class="small mono" id="gen-out" style="margin-bottom:.8em"></div>
+        <div class="err" id="setup-err"></div>
+        <button class="btn" style="width:100%" id="btn-create" data-i="btnCreate">🛡 Arxivni yaratish</button>
+        <p class="small" style="margin-top:1.2em" data-i="warnLose">Diqqat: agar ikkala maxfiy iborani ham yo'qotsangiz,
+          ma'lumotlar tiklanmaydi.</p>
+      </div>
+      <div id="view-lock" class="hidden">
+        <div class="lockbadge">[ 🔒 LOCKED ] <span data-i="ceremony">KIRISH MAROSIMI</span></div>
+        <div class="field"><label data-i="lblPass1">Bosh parol</label><input type="password" id="l-pass1"></div>
+        <div class="field"><label data-i="lblPass2">Ikkinchi maxfiy ibora</label><input type="password" id="l-pass2">
+        </div>
+        <div class="small mono" id="hint-display" style="margin-bottom:.6em"></div>
+        <div class="err" id="lock-err"></div>
+        <button class="btn" style="width:100%" id="btn-unlock" data-i="btnUnlock">🔓 Qulfni ochish</button>
+        <button class="btn ghost" style="width:100%;margin-top:.5em" id="btn-fs-connect" type="button">📁 KVAP
+          papka</button>
+      </div>
+      <div class="status-line"><span>OFFLINE</span><span>ENCRYPTED</span><span>LOCAL</span></div>
+      <div class="boot-log mono" id="boot-log"></div>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app">
+    <aside id="sidebar">
+      <div class="side-brand"><b>KRIPTEKS</b>
+        <div class="sub"><span>SECURE</span><span style="color:var(--accent)">v6.0</span></div>
+      </div>
+      <div class="side-user">
+        <div class="avatar">K</div>
+        <div style="flex:1;min-width:0">
+          <div class="uname" id="side-user-name">OPERATOR</div>
+          <div class="usession" id="side-user-session">session: --</div>
+        </div>
+      </div>
+      <div class="navgroup-label" data-i="navGroupMain">◈ ASOSIY</div>
+      <div class="navitem active" data-page="center"><span class="navicon">⌂</span><span class="navlabel"
+          data-i="navCenter">Markaz</span></div>
+      <div class="navitem" data-page="dossiers"><span class="navicon">🗂</span><span class="navlabel"
+          data-i="navDossiers">Dossielar</span><span class="navbadge" id="badge-dossiers">0</span></div>
+      <div class="navitem" data-page="passwords"><span class="navicon">🔑</span><span class="navlabel"
+          data-i="navPasswords">Parollar</span><span class="navbadge" id="badge-passwords">0</span></div>
+      <div class="navitem" data-page="notes"><span class="navicon">📝</span><span class="navlabel"
+          data-i="navNotes">Qaydlar</span><span class="navbadge" id="badge-notes">0</span></div>
+      <div class="navitem" data-page="diary"><span class="navicon">📔</span><span class="navlabel"
+          data-i="navDiary">Kundalik</span><span class="navbadge" id="badge-diary">0</span></div>
+      <div class="navgroup-label" data-i="navGroupPersonal">◈ SHAXSIY</div>
+      <div class="navitem" data-page="wallet"><span class="navicon">💰</span><span class="navlabel"
+          data-i="navWallet">Wallet</span><span class="navbadge" id="badge-wallet">0</span></div>
+      <div class="navitem" data-page="goals"><span class="navicon">🎯</span><span class="navlabel"
+          data-i="navGoals">Maqsadlar</span><span class="navbadge" id="badge-goals">0</span></div>
+      <div class="navitem" data-page="habits"><span class="navicon">📈</span><span class="navlabel"
+          data-i="navHabits">Odatlar</span><span class="navbadge" id="badge-habits">0</span></div>
+      <div class="navitem" data-page="health"><span class="navicon">🏥</span><span class="navlabel"
+          data-i="navHealth">Salomatlik</span><span class="navbadge" id="badge-health">0</span></div>
+      <div class="navitem" data-page="blacklist"><span class="navicon">⛔</span><span class="navlabel"
+          data-i="navBlacklist">Qora ro'yxat</span><span class="navbadge" id="badge-blacklist">0</span></div>
+      <div class="navitem" data-page="contacts"><span class="navicon">👥</span><span class="navlabel"
+          data-i="navContacts">Kontaktlar</span><span class="navbadge" id="badge-contacts">0</span></div>
+      <div class="navitem" data-page="tasks"><span class="navicon">✓</span><span class="navlabel"
+          data-i="navTasks">Vazifalar</span><span class="navbadge" id="badge-tasks">0</span></div>
+      <div class="navitem" data-page="calendar"><span class="navicon">📅</span><span class="navlabel"
+          data-i="navCalendar">Kalendar</span></div>
+      <div class="navitem" data-page="meros"><span class="navicon">⚱</span><span class="navlabel"
+          data-i="navMeros">Meros</span><span class="navbadge" id="badge-meros">0</span></div>
+      <div class="navgroup-label" data-i="navGroupWork">◈ ISH VA TA'LIM</div>
+      <div class="navitem" data-page="schedule"><span class="navicon">📅</span><span class="navlabel"
+          data-i="navSchedule">Kun tartibi</span></div>
+      <div class="navitem" data-page="school"><span class="navicon">📚</span><span class="navlabel"
+          data-i="navSchool">Fan jadvali</span></div>
+      <div class="navitem" data-page="team"><span class="navicon">👥</span><span class="navlabel"
+          data-i="navTeam">Jamoa</span><span class="navbadge" id="badge-team">0</span></div>
+      <div class="navitem" data-page="job"><span class="navicon">💼</span><span class="navlabel"
+          data-i="navJob">Job</span></div>
+      <div class="navgroup-label" data-i="navGroupMedia">◈ MEDIA</div>
+      <div class="navitem" data-page="media"><span class="navicon">🖼</span><span class="navlabel"
+          data-i="navMedia">Rasmlar va Videolar</span></div>
+      <div class="navitem" data-page="files"><span class="navicon">📁</span><span class="navlabel"
+          data-i="navFiles">Fayllar</span><span class="navbadge" id="badge-files">0</span></div>
+      <div class="navitem" data-page="audios"><span class="navicon">🔊</span><span class="navlabel"
+          data-i="navAudios">Audiolar</span><span class="navbadge" id="badge-audios">0</span></div>
+      <div class="navgroup-label" data-i="navGroupSystem">◈ TIZIM</div>
+      <div class="navitem" data-page="archive"><span class="navicon">📦</span><span class="navlabel"
+          data-i="navArchive">Arxiv</span></div>
+      <div class="navitem" data-page="backup"><span class="navicon">💾</span><span class="navlabel"
+          data-i="navBackup">Zaxira</span></div>
+      <div class="navitem" data-page="logs"><span class="navicon">📊</span><span class="navlabel"
+          data-i="navLogs">Jurnallar</span></div>
+      <div class="navitem" data-page="security"><span class="navicon">🛡</span><span class="navlabel"
+          data-i="navSecurity">Xavfsizlik</span></div>
+      <div class="navitem" data-page="themes"><span class="navicon">🎨</span><span class="navlabel"
+          data-i="navThemes">Mavzular</span></div>
+      <div class="navitem" data-page="settings"><span class="navicon">⚙</span><span class="navlabel"
+          data-i="navSettings">Sozlamalar</span></div>
+      <div class="side-footer">
+        <div class="row2"><span>STORAGE:</span><span id="fs-status">localStorage</span></div>
+        <div class="row2"><span>ENCRYPT:</span><span>AES-256-GCM</span></div>
+        <div class="row2"><span>THEME:</span><span id="theme-status">kripteks</span></div>
+        <div class="row2"><span>LANG:</span><span id="lang-status">uz</span></div>
+        <div class="row2"><span>IDLE:</span><span id="idle-countdown">--</span></div>
+      </div>
+    </aside>
+    <main id="main">
+      <div class="topbar">
+        <h2 id="page-title" data-i="navCenter">Markaz</h2>
+        <div class="session">
+          <div class="session-stat"><span class="ico">🕐</span><span id="clock">--:--:--</span></div>
+          <div class="session-stat"><span class="ico">⏱</span><span id="autolock-info">--</span></div>
+          <button class="btn ghost sm" id="btn-theme-quick">🎨</button>
+          <button class="btn ghost sm" id="btn-export">↧</button>
+          <button class="btn ghost sm" id="btn-fs-reconnect">📁</button>
+          <button class="btn ghost sm" id="btn-lock" data-i="btnLock">🔒</button>
+        </div>
+      </div>
+      <div id="page-body"></div>
+    </main>
+    <nav id="mobilenav">
+      <div class="navitem active" data-page="center"><span class="navicon">⌂</span><span class="navlabel"
+          data-i="navCenter_short">Markaz</span></div>
+      <div class="navitem" data-page="dossiers"><span class="navicon">🗂</span><span class="navlabel"
+          data-i="navDossiers_short">Dossie</span></div>
+      <div class="navitem" data-page="diary"><span class="navicon">📔</span><span class="navlabel"
+          data-i="navDiary_short">Kundalik</span></div>
+      <div class="navitem" data-page="wallet"><span class="navicon">💰</span><span class="navlabel"
+          data-i="navWallet_short">Wallet</span></div>
+      <div class="navitem" data-page="goals"><span class="navicon">🎯</span><span class="navlabel"
+          data-i="navGoals_short">Maqsad</span></div>
+      <div class="navitem" data-page="habits"><span class="navicon">📈</span><span class="navlabel"
+          data-i="navHabits_short">Odat</span></div>
+      <div class="navitem" data-page="health"><span class="navicon">🏥</span><span class="navlabel"
+          data-i="navHealth_short">Salomat</span></div>
+      <div class="navitem" data-page="blacklist"><span class="navicon">⛔</span><span class="navlabel"
+          data-i="navBlacklist_short">Qora</span></div>
+      <div class="navitem" data-page="passwords"><span class="navicon">🔑</span><span class="navlabel"
+          data-i="navPasswords_short">Parol</span></div>
+      <div class="navitem" data-page="notes"><span class="navicon">📝</span><span class="navlabel"
+          data-i="navNotes_short">Qayd</span></div>
+      <div class="navitem" data-page="tasks"><span class="navicon">✓</span><span class="navlabel"
+          data-i="navTasks_short">Vazifa</span></div>
+      <div class="navitem" data-page="contacts"><span class="navicon">👥</span><span class="navlabel"
+          data-i="navContacts_short">Kontakt</span></div>
+      <div class="navitem" data-page="meros"><span class="navicon">⚱</span><span class="navlabel"
+          data-i="navMeros_short">Meros</span></div>
+      <div class="navitem" data-page="calendar"><span class="navicon">📅</span><span class="navlabel"
+          data-i="navCalendar_short">Kalend</span></div>
+      <div class="navitem" data-page="schedule"><span class="navicon">⏰</span><span class="navlabel"
+          data-i="navSchedule_short">Tartib</span></div>
+      <div class="navitem" data-page="school"><span class="navicon">📚</span><span class="navlabel"
+          data-i="navSchool_short">Fan</span></div>
+      <div class="navitem" data-page="team"><span class="navicon">👥</span><span class="navlabel"
+          data-i="navTeam_short">Jamoa</span></div>
+      <div class="navitem" data-page="job"><span class="navicon">💼</span><span class="navlabel"
+          data-i="navJob_short">Job</span></div>
+      <div class="navitem" data-page="media"><span class="navicon">🖼</span><span class="navlabel"
+          data-i="navMedia_short">Media</span></div>
+      <div class="navitem" data-page="files"><span class="navicon">📁</span><span class="navlabel"
+          data-i="navFiles_short">Fayl</span></div>
+      <div class="navitem" data-page="audios"><span class="navicon">🔊</span><span class="navlabel"
+          data-i="navAudios_short">Audio</span></div>
+      <div class="navitem" data-page="archive"><span class="navicon">📦</span><span class="navlabel"
+          data-i="navArchive_short">Arxiv</span></div>
+      <div class="navitem" data-page="backup"><span class="navicon">💾</span><span class="navlabel"
+          data-i="navBackup_short">Zaxira</span></div>
+      <div class="navitem" data-page="logs"><span class="navicon">📊</span><span class="navlabel"
+          data-i="navLogs_short">Jurnal</span></div>
+      <div class="navitem" data-page="security"><span class="navicon">🛡</span><span class="navlabel"
+          data-i="navSecurity_short">Xavf</span></div>
+      <div class="navitem" data-page="themes"><span class="navicon">🎨</span><span class="navlabel"
+          data-i="navThemes_short">Mavzu</span></div>
+      <div class="navitem" data-page="settings"><span class="navicon">⚙</span><span class="navlabel"
+          data-i="navSettings_short">Sozlama</span></div>
+    </nav>
+  </div>
+
+  <div id="toasts"></div>
+  <div class="fs-indicator" id="fs-indicator">FS: localStorage</div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const I18N = {
+        uz: {
+          tagline: "XAVFSIZ SHAXSIY ARXIV", setupBadge: "◈ YANGI XAVFSIZ ARXIV YARATISH ◈",
+          lblPass1: "Bosh parol", lblPass2: "Ikkinchi maxfiy ibora", lblPass2c: "Ikkinchi iborani tasdiqlang",
+          lblHint: "Maslahat (ixtiyoriy)", btnGen: "🎲 Kuchli parol", btnCreate: "🛡 Arxivni yaratish",
+          warnLose: "Diqqat: agar ikkala maxfiy iborani ham yo'qotsangiz, ma'lumotlar tiklanmaydi.",
+          ceremony: "KIRISH MAROSIMI", btnUnlock: "🔓 Qulfni ochish", btnLock: "🔒 Qulflash",
+          navGroupMain: "◈ ASOSIY", navGroupPersonal: "◈ SHAXSIY", navGroupWork: "◈ ISH VA TA'LIM",
+          navGroupMedia: "◈ MEDIA", navGroupSystem: "◈ TIZIM",
+          navCenter: "Markaz", navDossiers: "Dossielar", navPasswords: "Parollar", navNotes: "Qaydlar",
+          navDiary: "Kundalik", navWallet: "Wallet", navGoals: "Maqsadlar", navHabits: "Odatlar",
+          navHealth: "Salomatlik", navBlacklist: "Qora ro'yxat", navContacts: "Kontaktlar",
+          navTasks: "Vazifalar", navCalendar: "Kalendar", navMeros: "Meros",
+          navSchedule: "Kun tartibi", navSchool: "Fan jadvali", navTeam: "Jamoa", navJob: "Job",
+          navMedia: "Rasmlar va Videolar", navFiles: "Fayllar", navAudios: "Audiolar",
+          navArchive: "Arxiv", navBackup: "Zaxira", navLogs: "Jurnallar", navSecurity: "Xavfsizlik",
+          navThemes: "Mavzular", navSettings: "Sozlamalar",
+          navCenter_short: "Markaz", navDossiers_short: "Dossie", navDiary_short: "Kundalik",
+          navWallet_short: "Wallet", navGoals_short: "Maqsad", navHabits_short: "Odat",
+          navHealth_short: "Salomat", navBlacklist_short: "Qora", navPasswords_short: "Parol",
+          navNotes_short: "Qayd", navTasks_short: "Vazifa", navContacts_short: "Kontakt",
+          navMeros_short: "Meros", navCalendar_short: "Kalend", navSchedule_short: "Tartib",
+          navSchool_short: "Fan", navTeam_short: "Jamoa", navJob_short: "Job",
+          navMedia_short: "Media", navFiles_short: "Fayl", navAudios_short: "Audio",
+          navArchive_short: "Arxiv", navBackup_short: "Zaxira", navLogs_short: "Jurnal",
+          navSecurity_short: "Xavf", navThemes_short: "Mavzu", navSettings_short: "Sozlama",
+          pageCenter: "Markaz", pageDossiers: "Dossielar", pagePasswords: "Parollar", pageNotes: "Qaydlar",
+          pageDiary: "Kundalik", pageWallet: "Wallet", pageGoals: "Maqsadlar", pageHabits: "Odatlar",
+          pageHealth: "Salomatlik", pageBlacklist: "Qora ro'yxat", pageContacts: "Kontaktlar",
+          pageTasks: "Vazifalar", pageCalendar: "Kalendar", pageMeros: "Meros",
+          pageSchedule: "Kun tartibi", pageSchool: "Fan jadvali", pageTeam: "Jamoa", pageJob: "Job",
+          pageMedia: "Rasmlar va Videolar", pageFiles: "Fayllar", pageAudios: "Audiolar",
+          pageArchive: "Arxiv", pageBackup: "Zaxira", pageLogs: "Jurnallar", pageSecurity: "Xavfsizlik",
+          pageThemes: "Mavzular", pageSettings: "Sozlamalar",
+          btnAdd: "+ Yangi", btnSave: "💾 Saqlash", btnCancel: "Bekor", search: "🔍 Qidirish...", empty: "Hozircha bo'sh"
+        },
+        en: {
+          tagline: "SECURE PERSONAL ARCHIVE", setupBadge: "◈ CREATE NEW SECURE ARCHIVE ◈",
+          lblPass1: "Master Passphrase", lblPass2: "Second Secret", lblPass2c: "Confirm second secret",
+          lblHint: "Hint (optional)", btnGen: "🎲 Generate passphrase", btnCreate: "🛡 Create archive",
+          warnLose: "Warning: if you lose both secrets, data cannot be recovered.",
+          ceremony: "ACCESS CEREMONY", btnUnlock: "🔓 Unlock", btnLock: "🔒 Lock",
+          navGroupMain: "◈ MAIN", navGroupPersonal: "◈ PERSONAL", navGroupWork: "◈ WORK & EDUCATION",
+          navGroupMedia: "◈ MEDIA", navGroupSystem: "◈ SYSTEM",
+          navCenter: "Center", navDossiers: "Dossiers", navPasswords: "Passwords", navNotes: "Notes",
+          navDiary: "Diary", navWallet: "Wallet", navGoals: "Goals", navHabits: "Habits",
+          navHealth: "Health", navBlacklist: "Blacklist", navContacts: "Contacts",
+          navTasks: "Tasks", navCalendar: "Calendar", navMeros: "Legacy",
+          navSchedule: "Schedule", navSchool: "School", navTeam: "Team", navJob: "Job",
+          navMedia: "Photos & Videos", navFiles: "Files", navAudios: "Audios",
+          navArchive: "Archive", navBackup: "Backup", navLogs: "Logs", navSecurity: "Security",
+          navThemes: "Themes", navSettings: "Settings",
+          navCenter_short: "Center", navDossiers_short: "Dossier", navDiary_short: "Diary",
+          navWallet_short: "Wallet", navGoals_short: "Goals", navHabits_short: "Habits",
+          navHealth_short: "Health", navBlacklist_short: "Black", navPasswords_short: "Pass",
+          navNotes_short: "Notes", navTasks_short: "Tasks", navContacts_short: "Contact",
+          navMeros_short: "Legacy", navCalendar_short: "Cal", navSchedule_short: "Sched",
+          navSchool_short: "School", navTeam_short: "Team", navJob_short: "Job",
+          navMedia_short: "Media", navFiles_short: "File", navAudios_short: "Audio",
+          navArchive_short: "Arch", navBackup_short: "Backup", navLogs_short: "Logs",
+          navSecurity_short: "Sec", navThemes_short: "Theme", navSettings_short: "Settings",
+          pageCenter: "Center", pageDossiers: "Dossiers", pagePasswords: "Passwords", pageNotes: "Notes",
+          pageDiary: "Diary", pageWallet: "Wallet", pageGoals: "Goals", pageHabits: "Habits",
+          pageHealth: "Health", pageBlacklist: "Blacklist", pageContacts: "Contacts",
+          pageTasks: "Tasks", pageCalendar: "Calendar", pageMeros: "Legacy",
+          pageSchedule: "Schedule", pageSchool: "School", pageTeam: "Team", pageJob: "Job",
+          pageMedia: "Photos & Videos", pageFiles: "Files", pageAudios: "Audios",
+          pageArchive: "Archive", pageBackup: "Backup", pageLogs: "Logs", pageSecurity: "Security",
+          pageThemes: "Themes", pageSettings: "Settings",
+          btnAdd: "+ New", btnSave: "💾 Save", btnCancel: "Cancel", search: "🔍 Search...", empty: "Empty yet"
+        },
+        ru: {
+          tagline: "ЗАЩИЩЁННЫЙ АРХИВ", setupBadge: "◈ СОЗДАТЬ АРХИВ ◈",
+          lblPass1: "Мастер-пароль", lblPass2: "Второй секрет", lblPass2c: "Подтвердите",
+          lblHint: "Подсказка (опц.)", btnGen: "🎲 Сгенерировать", btnCreate: "🛡 Создать",
+          warnLose: "Внимание: при потере секретов данные не восстановить.",
+          ceremony: "ТРЕБУЕТСЯ ПРОЦЕДУРА", btnUnlock: "🔓 Разблокировать", btnLock: "🔒 Блок",
+          navGroupMain: "◈ ОСНОВНОЕ", navGroupPersonal: "◈ ЛИЧНОЕ", navGroupWork: "◈ РАБОТА И УЧЁБА",
+          navGroupMedia: "◈ МЕДИА", navGroupSystem: "◈ СИСТЕМА",
+          navCenter: "Центр", navDossiers: "Досье", navPasswords: "Пароли", navNotes: "Заметки",
+          navDiary: "Дневник", navWallet: "Кошелёк", navGoals: "Цели", navHabits: "Привычки",
+          navHealth: "Здоровье", navBlacklist: "Чёрный список", navContacts: "Контакты",
+          navTasks: "Задачи", navCalendar: "Календарь", navMeros: "Наследие",
+          navSchedule: "Расписание", navSchool: "Школа", navTeam: "Команда", navJob: "Работа",
+          navMedia: "Фото и видео", navFiles: "Файлы", navAudios: "Аудио",
+          navArchive: "Архив", navBackup: "Резерв", navLogs: "Логи", navSecurity: "Безопасность",
+          navThemes: "Темы", navSettings: "Настройки",
+          navCenter_short: "Центр", navDossiers_short: "Досье", navDiary_short: "Дневн",
+          navWallet_short: "Кошел", navGoals_short: "Цели", navHabits_short: "Прив",
+          navHealth_short: "Здор", navBlacklist_short: "Чёрн", navPasswords_short: "Пар",
+          navNotes_short: "Замет", navTasks_short: "Зад", navContacts_short: "Конт",
+          navMeros_short: "Насл", navCalendar_short: "Кал", navSchedule_short: "Расп",
+          navSchool_short: "Школа", navTeam_short: "Ком", navJob_short: "Раб",
+          navMedia_short: "Медиа", navFiles_short: "Файл", navAudios_short: "Аудио",
+          navArchive_short: "Арх", navBackup_short: "Рез", navLogs_short: "Логи",
+          navSecurity_short: "Без", navThemes_short: "Тема", navSettings_short: "Настр",
+          pageCenter: "Центр", pageDossiers: "Досье", pagePasswords: "Пароли", pageNotes: "Заметки",
+          pageDiary: "Дневник", pageWallet: "Кошелёк", pageGoals: "Цели", pageHabits: "Привычки",
+          pageHealth: "Здоровье", pageBlacklist: "Чёрный список", pageContacts: "Контакты",
+          pageTasks: "Задачи", pageCalendar: "Календарь", pageMeros: "Наследие",
+          pageSchedule: "Расписание", pageSchool: "Школа", pageTeam: "Команда", pageJob: "Работа",
+          pageMedia: "Фото и видео", pageFiles: "Файлы", pageAudios: "Аудио",
+          pageArchive: "Архив", pageBackup: "Резерв", pageLogs: "Логи", pageSecurity: "Безопасность",
+          pageThemes: "Темы", pageSettings: "Настройки",
+          btnAdd: "+ Новое", btnSave: "💾 Сохранить", btnCancel: "Отмена", search: "🔍 Поиск...", empty: "Пока пусто"
+        }
+      };
+      let LANG = localStorage.getItem('kripteks_lang') || 'uz';
+      function T(k) {return (I18N[LANG] && I18N[LANG][k]) || I18N.uz[k] || k;}
+      function applyI18n() {
+        document.querySelectorAll('[data-i]').forEach(el => {
+          const k = el.getAttribute('data-i');
+          const txt = T(k);
+          if (txt) el.textContent = txt;
+        });
+      }
+
+      const THEMES = [{id: 'kripteks', name: '🟢 Kripteks'}, {id: 'xp-luna', name: '🪟 XP Luna'}, {id: 'win7-aero', name: '🪟 Win7 Aero'}, {id: 'win11', name: '🪟 Win11'}, {id: 'macos', name: '🍎 macOS'}, {id: 'cyberpunk', name: '🌈 Cyberpunk'}, {id: 'matrix', name: '💚 Matrix'}, {id: 'kali', name: '🐉 Kali'}, {id: 'kurtlar', name: '🐺 Kurtlar'}, {id: 'gold', name: '🏆 Gold'}, {id: 'dracula', name: '🧛 Dracula'}, {id: 'nord', name: '❄ Nord'}, {id: 'bloodmoon', name: '🌑 Blood Moon'}, {id: 'ocean', name: '🌊 Ocean'}, {id: 'sunset', name: '🌅 Sunset'}, {id: 'forest', name: '🌲 Forest'}, {id: 'glass', name: '💎 Glass'}, {id: 'neon', name: '🌃 Neon'}, {id: 'arctic', name: '🧊 Arctic'}, {id: 'vintage', name: '📜 Vintage'}];
+      let currentTheme = localStorage.getItem('kripteks_theme') || 'kripteks';
+
+      const enc = new TextEncoder(), dec = new TextDecoder();
+      const b64 = b => btoa(String.fromCharCode(...new Uint8Array(b)));
+      const unb64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0)).buffer;
+      function randBytes(n) {return crypto.getRandomValues(new Uint8Array(n));}
+      function uuid() {return crypto.randomUUID ? crypto.randomUUID() : ('id-' + Date.now() + '-' + Math.random().toString(16).slice(2));}
+      async function pbkdf2(p, s, i = 250000) {const k = await crypto.subtle.importKey('raw', enc.encode(p), 'PBKDF2', false, ['deriveBits']); return crypto.subtle.deriveBits({name: 'PBKDF2', salt: s, iterations: i, hash: 'SHA-256'}, k, 256);}
+      async function hkdfKey(ikm, salt, info) {const km = await crypto.subtle.importKey('raw', ikm, 'HKDF', false, ['deriveKey']); return crypto.subtle.deriveKey({name: 'HKDF', hash: 'SHA-256', salt, info: enc.encode(info)}, km, {name: 'AES-GCM', length: 256}, true, ['encrypt', 'decrypt']);}
+      /* Session continuity (convenience/security trade-off, documented in Security Center):
+         the derived vault key is cached in sessionStorage so a page refresh doesn't force
+         re-entering both secrets. sessionStorage is cleared when the tab/browser closes,
+         and is explicitly wiped the moment the user locks the vault (button, Ctrl+L, or
+         auto-lock timeout) — so only those actions actually lock the archive, as requested.
+         Trade-off: while unlocked, anyone with devtools access to this browser tab could
+         read the key from sessionStorage — no worse than the fact that the vault itself
+         is already open in that tab, but worth knowing. */
+      const SK_STORAGE_KEY = 'kripteks_sk';
+      async function cacheSessionKey(key) {try {const raw = await crypto.subtle.exportKey('raw', key); sessionStorage.setItem(SK_STORAGE_KEY, b64(raw));} catch (e) { } }
+      async function loadCachedSessionKey() {const s = sessionStorage.getItem(SK_STORAGE_KEY); if (!s) return null; try {return await crypto.subtle.importKey('raw', unb64(s), {name: 'AES-GCM'}, true, ['encrypt', 'decrypt']);} catch (e) {return null;} }
+      function clearCachedSessionKey() {try {sessionStorage.removeItem(SK_STORAGE_KEY);} catch (e) { } }
+      async function deriveVaultKey(p1, p2, h) {const k1 = await pbkdf2(p1, unb64(h.salt1), h.iterations); const k2 = await pbkdf2(p2, unb64(h.salt2), h.iterations); const c = new Uint8Array(64); c.set(new Uint8Array(k1), 0); c.set(new Uint8Array(k2), 32); return hkdfKey(c.buffer, unb64(h.salt3), 'kripteks-vault-key-v2');}
+      async function aesEncryptJSON(key, obj, aad = '') {const iv = randBytes(12); const ct = await crypto.subtle.encrypt({name: 'AES-GCM', iv, additionalData: enc.encode(aad)}, key, enc.encode(JSON.stringify(obj))); return {iv: b64(iv), ct: b64(ct)};}
+      async function aesDecryptJSON(key, rec, aad = '') {const pt = await crypto.subtle.decrypt({name: 'AES-GCM', iv: new Uint8Array(unb64(rec.iv)), additionalData: enc.encode(aad)}, key, unb64(rec.ct)); return JSON.parse(dec.decode(pt));}
+
+      const DB_NAME = 'kripteks_fs', DB_STORE = 'handles', DB_BLOBS = 'blobs';
+      function idbOpen() {return new Promise((res, rej) => {const r = indexedDB.open(DB_NAME, 2); r.onupgradeneeded = (e) => {const db = r.result; if (!db.objectStoreNames.contains(DB_STORE)) db.createObjectStore(DB_STORE); if (!db.objectStoreNames.contains(DB_BLOBS)) db.createObjectStore(DB_BLOBS);}; r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);});}
+      async function idbSet(k, v) {const db = await idbOpen(); return new Promise((res, rej) => {const tx = db.transaction(DB_STORE, 'readwrite'); tx.objectStore(DB_STORE).put(v, k); tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error);});}
+      async function idbGet(k) {const db = await idbOpen(); return new Promise((res, rej) => {const tx = db.transaction(DB_STORE, 'readonly'); const r = tx.objectStore(DB_STORE).get(k); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);});}
+      async function idbDel(k) {const db = await idbOpen(); return new Promise((res, rej) => {const tx = db.transaction(DB_STORE, 'readwrite'); tx.objectStore(DB_STORE).delete(k); tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error);});}
+      async function blobSet(k, v) {const db = await idbOpen(); return new Promise((res, rej) => {const tx = db.transaction(DB_BLOBS, 'readwrite'); tx.objectStore(DB_BLOBS).put(v, k); tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error);});}
+      async function blobGet(k) {const db = await idbOpen(); return new Promise((res, rej) => {const tx = db.transaction(DB_BLOBS, 'readonly'); const r = tx.objectStore(DB_BLOBS).get(k); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);});}
+      async function blobDel(k) {const db = await idbOpen(); return new Promise((res, rej) => {const tx = db.transaction(DB_BLOBS, 'readwrite'); tx.objectStore(DB_BLOBS).delete(k); tx.oncomplete = () => res(); tx.onerror = () => rej(tx.error);});}
+      async function blobListKeys() {const db = await idbOpen(); return new Promise((res, rej) => {const tx = db.transaction(DB_BLOBS, 'readonly'); const r = tx.objectStore(DB_BLOBS).getAllKeys(); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);});}
+
+      const FS = {handle: null, subHandles: {}, async init() {try {const s = await idbGet('kvap-root'); if (s) {const p = await s.queryPermission({mode: 'readwrite'}); if (p === 'granted') {this.handle = s; return true;} } } catch (e) { } return false;}, async pick() {if (!window.showDirectoryPicker) throw new Error('FS API yo\'q'); const h = await window.showDirectoryPicker({mode: 'readwrite', startIn: 'documents'}); this.handle = h; await idbSet('kvap-root', h); await this.ensureStructure(); return h;}, async ensureStructure() {if (!this.handle) return; const dirs = ['files', 'saves', 'audios', 'media', 'backups', 'logs', 'exports']; for (const d of dirs) {this.subHandles[d] = await this.handle.getDirectoryHandle(d, {create: true});} }, async writeFile(sub, name, content) {if (!this.handle) return false; try {await this.ensureStructure(); const dir = this.subHandles[sub] || this.handle; const fh = await dir.getFileHandle(name, {create: true}); const w = await fh.createWritable(); await w.write(content); await w.close(); return true;} catch (e) {return false;} }, async readFile(sub, name) {if (!this.handle) return null; try {const dir = this.subHandles[sub] || this.handle; const fh = await dir.getFileHandle(name); const f = await fh.getFile(); return await f.text();} catch (e) {return null;} } };
+
+      const SAVE_KEYS = {header: 'header.kvap', entries: 'entries.kvap', auth: 'auth.kvap', settings: 'settings.kvap', session: 'session.kvap', logs: 'logs.kvap'};
+      const Store = {useFS: false, cache: {}, async init() {this.useFS = await FS.init(); if (this.useFS) await FS.ensureStructure(); this.updateIndicator(); for (const [k, f] of Object.entries(SAVE_KEYS)) {let r = null; if (this.useFS) r = await FS.readFile('saves', f); if (!r) r = localStorage.getItem('kripteks_' + k); if (r) {try {this.cache[k] = JSON.parse(r);} catch (e) { } } } let lr = null; if (this.useFS) lr = await FS.readFile('logs', 'activity.log'); if (!lr) lr = localStorage.getItem('kripteks_activity_log'); try {this.cache.logs = lr ? JSON.parse(lr) : [];} catch (e) {this.cache.logs = [];} }, updateIndicator() {const el = document.getElementById('fs-indicator'); const st = document.getElementById('fs-status'); if (this.useFS) {el.textContent = 'FS: KVAP ✓'; el.className = 'fs-indicator ok'; if (st) st.textContent = 'KVAP ✓';} else {el.textContent = 'FS: IndexedDB'; el.className = 'fs-indicator warn'; if (st) st.textContent = 'IndexedDB';} }, async set(key, val) {this.cache[key] = val; const f = SAVE_KEYS[key]; const r = JSON.stringify(val); if (this.useFS && f) await FS.writeFile('saves', f, r); try {localStorage.setItem('kripteks_' + key, r);} catch (e) { } }, get(key, def) {return this.cache[key] !== undefined ? this.cache[key] : def;}, async setLogs(arr) {this.cache.logs = arr; const r = JSON.stringify(arr); if (this.useFS) await FS.writeFile('logs', 'activity.log', r); try {localStorage.setItem('kripteks_activity_log', r);} catch (e) { } }, getLogs() {return this.cache.logs || [];} };
+
+      async function logEvent(a, d = '', s = 'info') {const l = Store.getLogs(); l.unshift({id: uuid(), ts: Date.now(), action: a, detail: d, severity: s}); if (l.length > 500) l.length = 500; await Store.setLogs(l);}
+      function toast(msg, type = 'ok', dur = 3000) {const el = document.createElement('div'); el.className = 'toast ' + type; el.textContent = msg; document.getElementById('toasts').appendChild(el); setTimeout(() => {el.style.transition = 'all .3s'; el.style.opacity = '0'; el.style.transform = 'translateX(120%)'; setTimeout(() => el.remove(), 300);}, dur);}
+      function bootLog(msg, cls = '') {const el = document.getElementById('boot-log'); if (!el) return; const l = document.createElement('div'); l.className = cls; l.textContent = '[' + new Date().toLocaleTimeString() + '] ' + msg; el.appendChild(l); el.scrollTop = el.scrollHeight;}
+
+      let vaultKey = null, entriesCache = [], sessionStart = 0;
+      let idleTimer = null, idleDeadline = 0, clockTimer = null, mediaRecorder = null;
+      const objectUrlCache = new Map();
+
+      const WORDS = ["Nightfall", "Silent", "Archive", "Wolfmark", "Ghostline", "Ironvault", "Shadowpath", "Raven", "Cipherkey", "Echo", "Storm", "Falcon", "Obsidian", "Crimson", "Sentinel", "Horizon", "Ember", "Frostline", "Granite", "Whisper", "Talon", "Bastion", "Meridian", "Onyxroot", "Threshold", "Relic", "Beacon", "Citadel", "Driftwood", "Compass", "Harbor", "Lantern", "Marrow", "Nomad", "Outpost", "Prism", "Quiet", "Ridge", "Slate", "Tundra", "Umbra", "Vantage", "Warden", "Zenith", "Anchor", "Basalt", "Cinder", "Dune"];
+      function genPassphrase(n = 4, a = true) {const i = new Uint32Array(n); crypto.getRandomValues(i); const w = Array.from(i, x => WORDS[x % WORDS.length]); const num = a ? String(crypto.getRandomValues(new Uint32Array(1))[0] % 9000 + 1000) : ''; return {phrase: w.join('-') + (num ? '-' + num : ''), bits: Math.round(n * Math.log2(WORDS.length) + (a ? Math.log2(9000) : 0))};}
+      function genRandomPassword(l = 20) {const c = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%^&*-_=+'; const a = new Uint32Array(l); crypto.getRandomValues(a); return Array.from(a, n => c[n % c.length]).join('');}
+
+      function applyTheme(id) {
+        if (!THEMES.find(t => t.id === id)) id = 'kripteks';
+        currentTheme = id;
+        document.body.setAttribute('data-theme', id);
+        const st = document.getElementById('theme-status');
+        if (st) st.textContent = id;
+        localStorage.setItem('kripteks_theme', id);
+      }
+      async function setTheme(id) {
+        applyTheme(id);
+        const s = Store.get('settings', {});
+        s.theme = id;
+        await Store.set('settings', s);
+        toast('🎨 ' + id, 'ok', 1200);
+      }
+      async function setLang(id) {
+        LANG = id;
+        localStorage.setItem('kripteks_lang', id);
+        const st = document.getElementById('lang-status');
+        if (st) st.textContent = id;
+        const s = Store.get('settings', {});
+        s.lang = id;
+        await Store.set('settings', s);
+        applyI18n();
+        if (currentPage) {
+          const titleKey = 'page' + (currentPage.charAt(0).toUpperCase() + currentPage.slice(1));
+          document.getElementById('page-title').textContent = T(titleKey);
+        }
+        render();
+        toast('🌍 ' + id, 'ok', 1200);
+      }
+
+      const $ = s => document.querySelector(s);
+      function showSetup() {$('#view-setup').classList.remove('hidden'); $('#view-lock').classList.add('hidden');}
+      function showLock() {$('#view-setup').classList.add('hidden'); $('#view-lock').classList.remove('hidden');}
+
+      /* ============ FULLSCREEN ============ */
+      function toggleFullscreen() {
+        const el = document.documentElement;
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+          if (el.requestFullscreen) el.requestFullscreen().catch(e => { });
+          else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+          else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+          else if (el.msRequestFullscreen) el.msRequestFullscreen();
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen().catch(e => { });
+          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        }
+      }
+      document.getElementById('fs-toggle').addEventListener('click', toggleFullscreen);
+
+      /* ============ WELCOME SCREEN ============ */
+      document.getElementById('welcome-enter').addEventListener('click', async () => {
+        // Fullscreen so'rash
+        try {
+          const el = document.documentElement;
+          if (el.requestFullscreen) await el.requestFullscreen();
+          else if (el.webkitRequestFullscreen) await el.webkitRequestFullscreen();
+        } catch (e) { }
+        // Welcome yashirish
+        document.getElementById('welcome').classList.add('hide');
+        setTimeout(() => document.getElementById('welcome').style.display = 'none', 500);
+        // Gate ko'rsatish
+        document.getElementById('gate').classList.remove('hidden');
+      });
+
+      /* ============ GATE ============ */
+      $('#btn-gen').addEventListener('click', () => {const g = genPassphrase(4, true); $('#s-pass2').value = g.phrase; $('#s-pass2c').value = g.phrase; $('#gen-out').textContent = '≈ ' + g.bits + ' bit entropiya';});
+
+      $('#btn-create').addEventListener('click', async () => {
+        const p1 = $('#s-pass1').value, p2 = $('#s-pass2').value, p2c = $('#s-pass2c').value, hint = $('#s-hint').value;
+        const err = $('#setup-err'); err.textContent = '';
+        if (p1.length < 12) {err.textContent = 'Bosh parol kamida 12 belgi.'; return;}
+        if (p2.length < 12) {err.textContent = 'Ikkinchi ibora kamida 12 belgi.'; return;}
+        if (p2 !== p2c) {err.textContent = 'Ikkinchi ibora mos kelmadi.'; return;}
+        err.textContent = '🔐 Kalit hosil qilinmoqda...';
+        const h = {v: 6, iterations: 250000, salt1: b64(randBytes(16)), salt2: b64(randBytes(16)), salt3: b64(randBytes(16)), hint, created: Date.now()};
+        const key = await deriveVaultKey(p1, p2, h);
+        const canary = await aesEncryptJSON(key, {ok: true, created: Date.now()}, 'kripteks-canary');
+        h.canary = canary;
+        await Store.set('header', h); await Store.set('entries', []);
+        await Store.set('auth', {fails: 0, lockUntil: 0});
+        await Store.set('settings', {autolock: 5, theme: currentTheme, lang: LANG, username: 'OPERATOR'});
+        await Store.set('session', {lastPage: 'center', lastUnlock: Date.now()});
+        await logEvent('VAULT_CREATED', 'Yangi arxiv v6.0', 'ok');
+        vaultKey = key; entriesCache = [];
+        await cacheSessionKey(key);
+        enterApp();
+      });
+
+      $('#btn-unlock').addEventListener('click', async () => {
+        const err = $('#lock-err'); err.textContent = '';
+        const auth = Store.get('auth', {fails: 0, lockUntil: 0});
+        if (Date.now() < auth.lockUntil) {const s = Math.ceil((auth.lockUntil - Date.now()) / 1000); err.textContent = `Juda ko'p urinish. ${s}s kuting.`; return;}
+        const h = Store.get('header'); if (!h) {err.textContent = 'Arxiv topilmadi.'; showSetup(); return;}
+        const p1 = $('#l-pass1').value, p2 = $('#l-pass2').value;
+        err.textContent = '🔓 Tekshirilmoqda...';
+        try {
+          const key = await deriveVaultKey(p1, p2, h);
+          await aesDecryptJSON(key, h.canary, 'kripteks-canary');
+          await Store.set('auth', {fails: 0, lockUntil: 0});
+          vaultKey = key; entriesCache = Store.get('entries', []);
+          await cacheSessionKey(key);
+          await logEvent('UNLOCK_OK', 'Kirish', 'ok');
+          enterApp();
+        } catch (e) {
+          auth.fails = (auth.fails || 0) + 1;
+          const delay = Math.min(60, Math.pow(2, auth.fails)) * 1000;
+          auth.lockUntil = Date.now() + delay; await Store.set('auth', auth);
+          await logEvent('UNLOCK_FAIL', `#${auth.fails}`, 'err');
+          err.textContent = `❌ Rad etildi. #${auth.fails}, ${Math.round(delay / 1000)}s.`;
+        }
+      });
+
+      $('#btn-fs-connect').addEventListener('click', async () => {try {await FS.pick(); await Store.init(); Store.updateIndicator(); toast('📁 KVAP ulandi', 'ok'); const h = Store.get('header'); if (h) showLock(); else showSetup();} catch (e) {toast('Xato: ' + e.message, 'err', 5000);} });
+
+      function resetIdle() {clearTimeout(idleTimer); const m = (Store.get('settings', {autolock: 5}).autolock) || 5; if (m > 0 && vaultKey) {idleDeadline = Date.now() + m * 60 * 1000; idleTimer = setTimeout(lockNow, m * 60 * 1000);} else {idleDeadline = 0;} }
+      ['mousemove', 'keydown', 'click', 'touchstart', 'scroll'].forEach(ev => document.addEventListener(ev, () => {if (vaultKey) resetIdle();}, {passive: true}));
+
+      async function lockNow() {
+        if (!vaultKey) return;
+        await Store.set('session', Object.assign(Store.get('session', {}), {lastPage: currentPage, lastLock: Date.now()}));
+        await logEvent('LOCK', 'Qulflandi', 'info');
+        vaultKey = null; entriesCache = [];
+        clearCachedSessionKey();
+        clearInterval(clockTimer);
+        document.getElementById('app').classList.remove('active');
+        document.getElementById('gate').classList.remove('hidden');
+        $('#l-pass1').value = ''; $('#l-pass2').value = '';
+        const h = Store.get('header');
+        $('#hint-display').textContent = h && h.hint ? '💡 ' + h.hint : '';
+        showLock();
+      }
+      $('#btn-lock').addEventListener('click', lockNow);
+      document.addEventListener('keydown', e => {if (e.ctrlKey && e.key.toLowerCase() === 'l') {e.preventDefault(); if (vaultKey) lockNow();} });
+      /* Global convenience: tap outside any modal, or press Esc, closes it — covers every modal without touching each one */
+      document.addEventListener('click', e => {if (e.target.classList && e.target.classList.contains('modal-bg')) e.target.remove();});
+      document.addEventListener('keydown', e => {if (e.key === 'Escape') {const mb = document.querySelector('.modal-bg:last-of-type'); if (mb) mb.remove();} });
+
+      let currentPage = 'center';
+
+      function enterApp() {
+        document.getElementById('gate').classList.add('hidden');
+        document.getElementById('app').classList.add('active');
+        sessionStart = Date.now(); resetIdle();
+        const sess = Store.get('session', {});
+        go(sess.lastPage || 'center');
+        updateBadges(); tickClock();
+        toast('🛡 Xush kelibsiz', 'ok', 1500);
+      }
+
+      function tickClock() {
+        clearInterval(clockTimer);
+        const el = $('#clock'), al = $('#autolock-info'), tb = $('#tb-clock'), sess = $('#side-user-session');
+        const tick = () => {
+          const t = new Date().toLocaleTimeString(LANG);
+          if (el) el.textContent = t;
+          if (tb) tb.textContent = new Date().toLocaleTimeString(LANG, {hour: '2-digit', minute: '2-digit'});
+          if (sess) sess.textContent = 'session: ' + Math.floor((Date.now() - sessionStart) / 1000) + 's';
+          const m = Store.get('settings', {autolock: 5}).autolock;
+          if (al) al.textContent = m > 0 ? `${m}m` : 'off';
+          const ic = $('#idle-countdown');
+          if (ic && idleDeadline) ic.textContent = Math.max(0, Math.round((idleDeadline - Date.now()) / 1000)) + 's';
+          else if (ic) ic.textContent = '--';
+        };
+        tick();
+        clockTimer = setInterval(tick, 1000);
+      }
+
+      function go(page) {
+        currentPage = page;
+        document.querySelectorAll('.navitem').forEach(n => n.classList.toggle('active', n.dataset.page === page));
+        const titleKey = 'page' + (page.charAt(0).toUpperCase() + page.slice(1));
+        $('#page-title').textContent = T(titleKey);
+        Store.set('session', Object.assign(Store.get('session', {}), {lastPage: page}));
+        render();
+        const main = document.getElementById('main');
+        if (main) main.scrollTop = 0;
+      }
+      document.querySelectorAll('.navitem[data-page]').forEach(n => n.addEventListener('click', () => {if (vaultKey) go(n.dataset.page);}));
+
+      async function addEntry(module, data) {
+        const id = uuid();
+        const rec = await aesEncryptJSON(vaultKey, data, module + ':' + id);
+        entriesCache.push({id, module, rec, createdAt: Date.now(), updatedAt: Date.now()});
+        await Store.set('entries', entriesCache);
+        await logEvent('ADD', `${module}: ${data.title || id}`, 'info');
+      }
+      async function updateEntry(id, data) {
+        const e = entriesCache.find(x => x.id === id); if (!e) return;
+        e.rec = await aesEncryptJSON(vaultKey, data, e.module + ':' + id);
+        e.updatedAt = Date.now();
+        await Store.set('entries', entriesCache);
+        await logEvent('UPDATE', `${e.module}: ${data.title || id}`, 'info');
+      }
+      async function removeEntry(id) {
+        const e = entriesCache.find(x => x.id === id);
+        if (e) {
+          try {await blobDel(e.id);} catch (er) { }
+          if (objectUrlCache.has(e.id)) {
+            try {URL.revokeObjectURL(objectUrlCache.get(e.id));} catch (er) { }
+            objectUrlCache.delete(e.id);
+          }
+        }
+        entriesCache = entriesCache.filter(x => x.id !== id);
+        await Store.set('entries', entriesCache);
+        if (e) await logEvent('DELETE', `${e.module}: ${id}`, 'warn');
+      }
+      async function decryptEntry(e) {return aesDecryptJSON(vaultKey, e.rec, e.module + ':' + e.id);}
+      async function resolveMediaUrl(entry, data) {
+        try {
+          const blob = await blobGet(entry.id);
+          if (blob) {
+            if (objectUrlCache.has(entry.id)) return objectUrlCache.get(entry.id);
+            const url = URL.createObjectURL(blob);
+            objectUrlCache.set(entry.id, url);
+            return url;
+          }
+        } catch (e) { }
+        if (data && data.dataUrl) return data.dataUrl;
+        return null;
+      }
+      async function listModule(module) {
+        const items = entriesCache.filter(e => e.module === module);
+        const out = [];
+        for (const e of items) {
+          try {
+            const data = await decryptEntry(e);
+            const item = {id: e.id, createdAt: e.createdAt, updatedAt: e.updatedAt, module: e.module, data};
+            if (module === 'media' || module === 'audios' || module === 'files' || module === 'goals') {
+              const url = await resolveMediaUrl(e, data);
+              if (url) item.mediaUrl = url;
+            }
+            out.push(item);
+          } catch (err) { }
+        }
+        return out.sort((a, b) => (b.data.pinned ? 1 : 0) - (a.data.pinned ? 1 : 0) || b.createdAt - a.createdAt);
+      }
+      async function countModule(m) {return entriesCache.filter(e => e.module === m).length;}
+      async function updateBadges() {const mods = ['dossiers', 'passwords', 'notes', 'diary', 'wallet', 'goals', 'habits', 'health', 'blacklist', 'contacts', 'tasks', 'meros', 'files', 'audios', 'team']; for (const m of mods) {const b = document.getElementById('badge-' + m); if (b) b.textContent = await countModule(m);} }
+
+      const body = () => $('#page-body');
+
+      async function render() {
+        if (!vaultKey) return;
+        const map = {
+          center: renderCenter,
+          dossiers: () => renderList('dossiers', [{k: 'title', l: 'Sarlavha'}, {k: 'codename', l: 'Kod nomi'}, {k: 'classification', l: 'Klassifikatsiya'}, {k: 'description', l: 'Tavsif', t: 'textarea'}, {k: 'tags', l: 'Teglar'}], 'Yangi dossie'),
+          notes: () => renderList('notes', [{k: 'title', l: 'Sarlavha'}, {k: 'body', l: 'Matn', t: 'textarea'}, {k: 'tags', l: 'Teglar'}], 'Yangi qayd'),
+          diary: renderDiary,
+          passwords: renderPasswords,
+          contacts: () => renderList('contacts', [{k: 'title', l: 'Ism'}, {k: 'role', l: 'Rol'}, {k: 'phone', l: 'Telefon'}, {k: 'email', l: 'Email'}, {k: 'address', l: 'Manzil'}, {k: 'notes', l: 'Izoh', t: 'textarea'}], 'Yangi kontakt'),
+          meros: () => renderList('meros', [{k: 'title', l: 'Sarlavha'}, {k: 'recipient', l: 'Qabul qiluvchi'}, {k: 'date', l: 'Sana'}, {k: 'body', l: 'Xabar', t: 'textarea'}], 'Yangi meros'),
+          tasks: renderTasks,
+          calendar: renderCalendar,
+          wallet: renderWallet,
+          goals: renderGoals,
+          habits: renderHabits,
+          health: renderHealth,
+          blacklist: renderBlacklist,
+          schedule: renderSchedule,
+          school: renderSchool,
+          team: renderTeam,
+          job: renderJob,
+          files: renderFiles,
+          media: () => renderMedia('media'),
+          audios: renderAudios,
+          archive: renderArchive,
+          backup: renderBackup,
+          logs: renderLogs,
+          security: renderSecurity,
+          themes: renderThemes,
+          settings: renderSettings
+        };
+        const r = map[currentPage];
+        if (r) {try {await r();} catch (e) {console.error(e); body().innerHTML = `<div class="empty">❌ ${escapeHtml(e.message)}</div>`;} }
+        else body().innerHTML = `<div class="empty">🚧 "${currentPage}"</div>`;
+      }
+
+      async function renderCenter() {
+        const mods = ['dossiers', 'notes', 'passwords', 'diary', 'contacts', 'tasks', 'files', 'audios', 'wallet', 'goals', 'habits', 'health', 'blacklist', 'media'];
+        const counts = {}; for (const m of mods) counts[m] = await countModule(m);
+        const logs = Store.getLogs().slice(0, 5);
+        const sessMin = Math.floor((Date.now() - sessionStart) / 60000);
+        const walletItems = await listModule('wallet');
+        let total = 0; walletItems.forEach(w => {total += parseFloat(w.data.amount) || 0;});
+        body().innerHTML = `
+    <div class="grid" style="margin-bottom:1em">
+      <div class="card clickable" data-goto="wallet"><span class="card-icon">💰</span><h3>Boylik</h3><div class="num">${total.toFixed(0)}</div><div class="small mono" style="margin-top:.4em">so\'m</div></div>
+      <div class="card clickable" data-goto="goals"><span class="card-icon">🎯</span><h3>Maqsadlar</h3><div class="num">${counts.goals}</div></div>
+      <div class="card clickable" data-goto="diary"><span class="card-icon">📔</span><h3>Kundalik</h3><div class="num">${counts.diary}</div></div>
+      <div class="card clickable" data-goto="habits"><span class="card-icon">📈</span><h3>Odatlar</h3><div class="num">${counts.habits}</div></div>
+      <div class="card clickable" data-goto="blacklist"><span class="card-icon">⛔</span><h3>Qora</h3><div class="num" style="color:var(--danger)">${counts.blacklist}</div></div>
+      <div class="card clickable" data-goto="dossiers"><span class="card-icon">🗂</span><h3>Dossielar</h3><div class="num">${counts.dossiers}</div></div>
+      <div class="card clickable" data-goto="passwords"><span class="card-icon">🔑</span><h3>Parollar</h3><div class="num">${counts.passwords}</div></div>
+      <div class="card clickable" data-goto="notes"><span class="card-icon">📝</span><h3>Qaydlar</h3><div class="num">${counts.notes}</div></div>
+      <div class="card clickable" data-goto="contacts"><span class="card-icon">👥</span><h3>Kontaktlar</h3><div class="num">${counts.contacts}</div></div>
+      <div class="card clickable" data-goto="tasks"><span class="card-icon">✓</span><h3>Vazifalar</h3><div class="num">${counts.tasks}</div></div>
+      <div class="card clickable" data-goto="health"><span class="card-icon">🏥</span><h3>Salomatlik</h3><div class="num">${counts.health}</div></div>
+      <div class="card clickable" data-goto="media"><span class="card-icon">🖼</span><h3>Media</h3><div class="num">${counts.media}</div></div>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+      <div class="panel">
+        <div class="panel-head"><h3>◈ TIZIM</h3><span class="tag ok">● ACTIVE</span></div>
+        <div class="small mono" style="display:grid;gap:.4em">
+          <div style="display:flex;justify-content:space-between"><span>SEANS:</span><strong>${sessMin}m</strong></div>
+          <div style="display:flex;justify-content:space-between"><span>STORAGE:</span><strong>${FS.handle ? 'KVAP ✓' : 'IndexedDB'}</strong></div>
+          <div style="display:flex;justify-content:space-between"><span>ENCRYPT:</span><strong>AES-256-GCM</strong></div>
+          <div style="display:flex;justify-content:space-between"><span>THEME:</span><strong>${currentTheme}</strong></div>
+          <div style="display:flex;justify-content:space-between"><span>TIL:</span><strong>${LANG}</strong></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>◈ SO'NGGI</h3></div>
+        ${logs.length ? logs.map(l => `<div class="small mono" style="padding:.35em 0;border-bottom:1px solid var(--line)"><span class="tag ${l.severity === 'err' ? 'danger' : l.severity === 'warn' ? 'warn' : 'info'}">${l.action}</span> <span style="color:var(--ink-faint);font-size:9.5px">${new Date(l.ts).toLocaleTimeString()}</span></div>`).join('') : '<div class="empty">' + T('empty') + '</div>'}
+      </div>
+    </div>`;
+        body().querySelectorAll('[data-goto]').forEach(c => c.addEventListener('click', () => go(c.dataset.goto)));
+      }
+
+      function fieldInput(f, val = '') {
+        const v = String(val || '').replace(/"/g, '&quot;');
+        if (f.t === 'textarea') return `<div class="field"><label>${f.l}</label><textarea rows="4" data-f="${f.k}">${escapeHtml(val || '')}</textarea></div>`;
+        if (f.t === 'select') return `<div class="field"><label>${f.l}</label><select data-f="${f.k}">${(f.opts || []).map(o => `<option value="${o}" ${o === val ? 'selected' : ''}>${o}</option>`).join('')}</select></div>`;
+        return `<div class="field"><label>${f.l}</label><input data-f="${f.k}" value="${v}"></div>`;
+      }
+
+      async function renderList(module, fields, addLabel) {
+        const items = await listModule(module);
+        body().innerHTML = `
+    <div class="panel">
+      <div class="panel-head"><h3>◈ ${module.toUpperCase()} <span class="tag info">${items.length}</span></h3>
+        <button class="btn" id="add-btn">${T('btnAdd')}</button></div>
+      <div class="field" style="margin-bottom:.8em"><input type="text" id="search-box" placeholder="${T('search')}"></div>
+      <div id="list-wrap">${items.length ? '' : '<div class="empty">' + T('empty') + '</div>'}</div>
+    </div>`;
+        const list = $('#list-wrap');
+        const renderItems = (filter = '') => {
+          list.innerHTML = '';
+          const f = items.filter(it => !filter || JSON.stringify(it.data).toLowerCase().includes(filter.toLowerCase()));
+          if (!f.length) {list.innerHTML = '<div class="empty">' + T('empty') + '</div>'; return;}
+          f.forEach(it => {
+            const div = document.createElement('div'); div.className = 'entry';
+            const title = it.data.title || it.data.name || '(nomsiz)';
+            const sub = it.data.description || it.data.body || it.data.tags || it.data.email || '';
+            div.innerHTML = `${it.data.pinned ? '<span class="pin-tag">📌</span>' : ''}
+        <div style="flex:1;min-width:0"><div class="entry-title">${escapeHtml(title)}</div>
+        <div class="meta">${escapeHtml(String(sub)).slice(0, 140)}</div>
+        <div class="meta">🕐 ${new Date(it.createdAt).toLocaleString(LANG)}</div></div>
+        <div class="actions"><button class="iconbtn" data-edit="${it.id}">✎</button><button class="iconbtn" data-del="${it.id}">✕</button></div>`;
+            list.appendChild(div);
+          });
+          list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); updateBadges(); render();} }));
+          list.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => {const it = items.find(x => x.id === b.dataset.edit); openEntryModal(module, fields, it.data, it.id);}));
+        };
+        renderItems();
+        $('#search-box')?.addEventListener('input', e => renderItems(e.target.value));
+        $('#add-btn')?.addEventListener('click', () => openEntryModal(module, fields, {}, null));
+      }
+
+      function openEntryModal(module, fields, data, id) {
+        const bg = document.createElement('div'); bg.className = 'modal-bg';
+        bg.innerHTML = `<div class="modal"><h3>${id ? '✎' : T('btnAdd')}</h3>
+    ${fields.map(f => fieldInput(f, data[f.k] || '')).join('')}
+    <div class="row" style="margin-top:1em"><button class="btn ghost" id="m-cancel">${T('btnCancel')}</button><button class="btn" id="m-save">${T('btnSave')}</button></div></div>`;
+        document.body.appendChild(bg);
+        bg.querySelector('#m-cancel').addEventListener('click', () => bg.remove());
+        bg.querySelector('#m-save').addEventListener('click', async () => {
+          const out = Object.assign({}, data);
+          fields.forEach(f => {out[f.k] = bg.querySelector(`[data-f="${f.k}"]`).value;});
+          if (id) await updateEntry(id, out); else await addEntry(module, out);
+          bg.remove(); updateBadges(); render(); toast('✅ Saqlandi', 'ok', 1200);
+        });
+      }
+
+      /* ============ KUNDALIK ============ */
+      async function renderDiary() {
+        const items = await listModule('diary');
+        const today = new Date().toISOString().slice(0, 10);
+        const todayItems = items.filter(i => i.data.date === today);
+        body().innerHTML = `
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));margin-bottom:1em">
+      <div class="card"><h3>Bugun</h3><div class="num">${todayItems.length}</div></div>
+      <div class="card"><h3>Jami</h3><div class="num">${items.length}</div></div>
+      <div class="card ok"><h3>Bu hafta</h3><div class="num">${items.filter(i => i.data.date && new Date(i.data.date) >= new Date(Date.now() - 7 * 864e5)).length}</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>📔 KUNDALIK <span class="tag info">${items.length}</span></h3>
+        <button class="btn" id="add-btn">${T('btnAdd')}</button></div>
+      <div class="field"><input id="search-box" placeholder="${T('search')}"></div>
+      <div id="list-wrap"></div>
+    </div>`;
+        const list = $('#list-wrap');
+        if (!items.length) list.innerHTML = '<div class="empty">' + T('empty') + '</div>';
+        items.forEach(it => {
+          const div = document.createElement('div'); div.className = 'entry';
+          const mood = it.data.mood || '';
+          const moodEmoji = {'yaxshi': '😊', 'normal': '😐', 'yomon': '😢', 'ajoyib': '🤩', 'charchagan': '😴'}[mood] || '';
+          div.innerHTML = `<div style="flex:1;min-width:0">
+      <div class="entry-title">${moodEmoji} ${it.data.date || ''} ${escapeHtml(it.data.title || '')}</div>
+      <div class="meta">${escapeHtml(it.data.body || '').slice(0, 200)}</div>
+    </div>
+    <div class="actions"><button class="iconbtn" data-edit="${it.id}">✎</button><button class="iconbtn" data-del="${it.id}">✕</button></div>`;
+          list.appendChild(div);
+        });
+        list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); updateBadges(); render();} }));
+        list.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => {const it = items.find(x => x.id === b.dataset.edit); openDiaryModal(it.data, it.id);}));
+        $('#add-btn').addEventListener('click', () => openDiaryModal({date: today}, null));
+      }
+      function openDiaryModal(data, id) {
+        const bg = document.createElement('div'); bg.className = 'modal-bg';
+        bg.innerHTML = `<div class="modal"><h3>📔 ${id ? '✎' : '+ Yangi yozuv'}</h3>
+    ${fieldInput({k: 'date', l: 'Sana'}, data.date || new Date().toISOString().slice(0, 10))}
+    ${fieldInput({k: 'title', l: 'Sarlavha'}, data.title || '')}
+    <div class="field"><label>Kayfiyat</label><select data-f="mood">
+      <option value="">—</option>
+      <option value="ajoyib" ${data.mood === 'ajoyib' ? 'selected' : ''}>🤩 Ajoyib</option>
+      <option value="yaxshi" ${data.mood === 'yaxshi' ? 'selected' : ''}>😊 Yaxshi</option>
+      <option value="normal" ${data.mood === 'normal' ? 'selected' : ''}>😐 Normal</option>
+      <option value="charchagan" ${data.mood === 'charchagan' ? 'selected' : ''}>😴 Charchagan</option>
+      <option value="yomon" ${data.mood === 'yomon' ? 'selected' : ''}>😢 Yomon</option>
+    </select></div>
+    ${fieldInput({k: 'body', l: 'Matn', t: 'textarea'}, data.body || '')}
+    <div class="row" style="margin-top:1em"><button class="btn ghost" id="m-cancel">${T('btnCancel')}</button><button class="btn" id="m-save">${T('btnSave')}</button></div></div>`;
+        document.body.appendChild(bg);
+        bg.querySelector('#m-cancel').addEventListener('click', () => bg.remove());
+        bg.querySelector('#m-save').addEventListener('click', async () => {
+          const out = Object.assign({}, data);
+          ['date', 'title', 'mood', 'body'].forEach(k => out[k] = bg.querySelector(`[data-f="${k}"]`).value);
+          if (id) await updateEntry(id, out); else await addEntry('diary', out);
+          bg.remove(); updateBadges(); render(); toast('✅', 'ok', 1200);
+        });
+      }
+
+      /* ============ ODATLAR ============ */
+      async function renderHabits() {
+        const items = await listModule('habits');
+        const today = new Date().toISOString().slice(0, 10);
+        body().innerHTML = `
+    <div class="panel">
+      <div class="panel-head"><h3>📈 ODATLAR <span class="tag info">${items.length}</span></h3>
+        <button class="btn" id="add-btn">${T('btnAdd')}</button></div>
+      <div id="list-wrap"></div>
+    </div>`;
+        const list = $('#list-wrap');
+        if (!items.length) list.innerHTML = '<div class="empty">' + T('empty') + '</div>';
+        items.forEach(it => {
+          const div = document.createElement('div'); div.className = 'entry';
+          const days = it.data.days || [];
+          const todayDone = days.includes(today);
+          const streak = it.data.streak || 0;
+          div.innerHTML = `<div style="flex:1;min-width:0">
+      <div class="entry-title">${todayDone ? '✓' : '○'} ${escapeHtml(it.data.title || '')}</div>
+      <div class="meta">🔥 ${streak} kun · ${days.length} marta</div>
+    </div>
+    <div class="actions">
+      <button class="iconbtn" data-toggle="${it.id}" style="background:${todayDone ? 'var(--grad)' : 'var(--glass)'};color:${todayDone ? '#fff' : 'var(--ink-dim)'}">✓</button>
+      <button class="iconbtn" data-del="${it.id}">✕</button></div>`;
+          list.appendChild(div);
+        });
+        list.querySelectorAll('[data-toggle]').forEach(b => b.addEventListener('click', async () => {
+          const it = items.find(x => x.id === b.dataset.toggle);
+          const days = it.data.days || [];
+          const idx = days.indexOf(today);
+          let newDays;
+          if (idx >= 0) {newDays = days.filter(d => d !== today);}
+          else {newDays = [...days, today];}
+          const streak = (it.data.streak || 0) + (idx < 0 ? 1 : -1);
+          await updateEntry(it.id, Object.assign({}, it.data, {days: newDays, streak: Math.max(0, streak)}));
+          render();
+        }));
+        list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); updateBadges(); render();} }));
+        $('#add-btn').addEventListener('click', () => openEntryModal('habits', [{k: 'title', l: 'Odat nomi'}, {k: 'notes', l: 'Izoh', t: 'textarea'}], {}, null));
+      }
+
+      /* ============ SALOMATLIK ============ */
+      async function renderHealth() {
+        const items = await listModule('health');
+        const types = ['Qon bosimi', 'Vazn', 'Yurak urishi', 'Qand', 'Harorat', 'Boshqa'];
+        body().innerHTML = `
+    <div class="panel">
+      <div class="panel-head"><h3>🏥 SALOMATLIK <span class="tag info">${items.length}</span></h3>
+        <button class="btn" id="add-btn">${T('btnAdd')}</button></div>
+      <div class="field"><input id="search-box" placeholder="${T('search')}"></div>
+      <div id="list-wrap"></div>
+    </div>`;
+        const list = $('#list-wrap');
+        if (!items.length) list.innerHTML = '<div class="empty">' + T('empty') + '</div>';
+        items.forEach(it => {
+          const div = document.createElement('div'); div.className = 'entry';
+          div.innerHTML = `<div style="flex:1;min-width:0">
+      <div class="entry-title">🩺 ${escapeHtml(it.data.title || '')}</div>
+      <div class="meta">📊 ${escapeHtml(it.data.value || '')} ${escapeHtml(it.data.unit || '')}</div>
+      <div class="meta">📅 ${it.data.date || ''}</div>
+      ${it.data.notes ? `<div class="meta">${escapeHtml(it.data.notes)}</div>` : ''}
+    </div>
+    <div class="actions"><button class="iconbtn" data-del="${it.id}">✕</button></div>`;
+          list.appendChild(div);
+        });
+        list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); updateBadges(); render();} }));
+        $('#add-btn').addEventListener('click', () => openHealthModal({}, null));
+      }
+      function openHealthModal(data, id) {
+        const bg = document.createElement('div'); bg.className = 'modal-bg';
+        bg.innerHTML = `<div class="modal"><h3>🏥 Yangi yozuv</h3>
+    <div class="field"><label>Turi</label><select data-f="title">
+      ${['Qon bosimi', 'Vazn', 'Yurak urishi', 'Qand', 'Harorat', 'Boshqa'].map(t => `<option value="${t}" ${data.title === t ? 'selected' : ''}>${t}</option>`).join('')}
+    </select></div>
+    ${fieldInput({k: 'value', l: 'Qiymat'}, data.value || '')}
+    ${fieldInput({k: 'unit', l: 'Birlik (kg, mmHg...)'}, data.unit || '')}
+    ${fieldInput({k: 'date', l: 'Sana'}, data.date || new Date().toISOString().slice(0, 10))}
+    ${fieldInput({k: 'notes', l: 'Izoh', t: 'textarea'}, data.notes || '')}
+    <div class="row" style="margin-top:1em"><button class="btn ghost" id="m-cancel">${T('btnCancel')}</button><button class="btn" id="m-save">${T('btnSave')}</button></div></div>`;
+        document.body.appendChild(bg);
+        bg.querySelector('#m-cancel').addEventListener('click', () => bg.remove());
+        bg.querySelector('#m-save').addEventListener('click', async () => {
+          const out = Object.assign({}, data);
+          ['title', 'value', 'unit', 'date', 'notes'].forEach(k => out[k] = bg.querySelector(`[data-f="${k}"]`).value);
+          if (id) await updateEntry(id, out); else await addEntry('health', out);
+          bg.remove(); updateBadges(); render(); toast('✅', 'ok', 1200);
+        });
+      }
+
+      /* ============ PASSWORDS ============ */
+      async function renderPasswords() {
+        const items = await listModule('passwords');
+        body().innerHTML = `<div class="panel">
+    <div class="panel-head"><h3>◈ PAROLLAR <span class="tag info">${items.length}</span></h3>
+      <button class="btn" id="add-btn">${T('btnAdd')}</button></div>
+    <div class="field"><input id="search-box" placeholder="${T('search')}"></div>
+    <div id="list-wrap"></div></div>`;
+        const list = $('#list-wrap');
+        const renderItems = (filter = '') => {
+          list.innerHTML = '';
+          const f = items.filter(it => !filter || JSON.stringify(it.data).toLowerCase().includes(filter.toLowerCase()));
+          if (!f.length) {list.innerHTML = '<div class="empty">' + T('empty') + '</div>'; return;}
+          f.forEach(it => {
+            const div = document.createElement('div'); div.className = 'entry';
+            const strength = it.data.password ? Math.min(100, it.data.password.length * 5) : 0;
+            const sc = strength > 70 ? 'var(--ok)' : strength > 40 ? 'var(--warn)' : 'var(--danger)';
+            div.innerHTML = `<div style="flex:1;min-width:0"><div class="entry-title">${escapeHtml(it.data.title || '')}</div>
+        <div class="meta">👤 ${escapeHtml(it.data.username || '—')}</div>
+        <div class="meta">🔒 ${'•'.repeat(Math.min(20, (it.data.password || '').length))} <span class="tag" style="border-color:${sc};color:${sc}">${strength}%</span></div></div>
+        <div class="actions"><button class="iconbtn" data-copy="${it.id}">⧉</button><button class="iconbtn" data-show="${it.id}">👁</button><button class="iconbtn" data-edit="${it.id}">✎</button><button class="iconbtn" data-del="${it.id}">✕</button></div>`;
+            list.appendChild(div);
+          });
+          list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); updateBadges(); render();} }));
+          list.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => {const it = items.find(x => x.id === b.dataset.edit); openPasswordModal(it.data, it.id);}));
+          list.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {const it = items.find(x => x.id === b.dataset.copy); try {await navigator.clipboard.writeText(it.data.password || ''); b.textContent = '✓'; toast('📋', 'ok', 2000); setTimeout(() => {b.textContent = '⧉';}, 1500);} catch (e) {toast('Xato', 'err');} }));
+          list.querySelectorAll('[data-show]').forEach(b => b.addEventListener('click', () => {const it = items.find(x => x.id === b.dataset.show); toast('🔑 ' + it.data.password, 'ok', 6000);}));
+        };
+        renderItems();
+        $('#search-box').addEventListener('input', e => renderItems(e.target.value));
+        $('#add-btn').addEventListener('click', () => openPasswordModal({}, null));
+      }
+      function openPasswordModal(data, id) {
+        const bg = document.createElement('div'); bg.className = 'modal-bg';
+        bg.innerHTML = `<div class="modal"><h3>${id ? '✎' : '+ Yangi parol'}</h3>
+    ${fieldInput({k: 'title', l: 'Sarlavha'}, data.title || '')}
+    ${fieldInput({k: 'username', l: 'Login'}, data.username || '')}
+    ${fieldInput({k: 'url', l: 'URL'}, data.url || '')}
+    <div class="field"><label>Parol</label><input data-f="password" value="${escapeHtml(data.password || '')}"></div>
+    <div class="row" style="margin-bottom:.8em"><button class="btn ghost sm" id="p-gen-word">🎲</button><button class="btn ghost sm" id="p-gen-rand">⚡</button></div>
+    ${fieldInput({k: 'notes', l: 'Izoh', t: 'textarea'}, data.notes || '')}
+    <div class="row"><button class="btn ghost" id="m-cancel">${T('btnCancel')}</button><button class="btn" id="m-save">${T('btnSave')}</button></div></div>`;
+        document.body.appendChild(bg);
+        bg.querySelector('#p-gen-word').addEventListener('click', () => {bg.querySelector('[data-f="password"]').value = genPassphrase(4, true).phrase;});
+        bg.querySelector('#p-gen-rand').addEventListener('click', () => {bg.querySelector('[data-f="password"]').value = genRandomPassword(20);});
+        bg.querySelector('#m-cancel').addEventListener('click', () => bg.remove());
+        bg.querySelector('#m-save').addEventListener('click', async () => {
+          const out = Object.assign({}, data);
+          ['title', 'username', 'url', 'password', 'notes'].forEach(k => out[k] = bg.querySelector(`[data-f="${k}"]`).value);
+          if (id) await updateEntry(id, out); else await addEntry('passwords', out);
+          bg.remove(); updateBadges(); render(); toast('✅', 'ok', 1200);
+        });
+      }
+
+      /* ============ TASKS ============ */
+      async function renderTasks() {
+        const items = await listModule('tasks');
+        const open = items.filter(i => !i.data.done).length;
+        const done = items.filter(i => i.data.done).length;
+        body().innerHTML = `<div class="panel"><div class="panel-head"><h3>◈ VAZIFALAR <span class="tag info">${open} / ${done}</span></h3>
+    <button class="btn" id="add-btn">${T('btnAdd')}</button></div><div id="list-wrap"></div></div>`;
+        const list = $('#list-wrap');
+        if (!items.length) list.innerHTML = '<div class="empty">' + T('empty') + '</div>';
+        items.forEach(it => {
+          const div = document.createElement('div'); div.className = 'entry';
+          div.style.borderLeftColor = it.data.done ? 'var(--ink-faint)' : 'var(--warn)';
+          if (it.data.done) div.style.opacity = '.55';
+          div.innerHTML = `<div style="flex:1"><div class="entry-title">${it.data.done ? '✓' : '○'} ${escapeHtml(it.data.title || '')}</div>
+      <div class="meta">${escapeHtml(it.data.description || '')}</div>
+      <div class="meta">${it.data.priority ? '⚡ ' + it.data.priority : ''} ${it.data.due ? '📅 ' + it.data.due : ''}</div></div>
+      <div class="actions"><button class="iconbtn" data-toggle="${it.id}">${it.data.done ? '↺' : '✓'}</button><button class="iconbtn" data-edit="${it.id}">✎</button><button class="iconbtn" data-del="${it.id}">✕</button></div>`;
+          list.appendChild(div);
+        });
+        list.querySelectorAll('[data-toggle]').forEach(b => b.addEventListener('click', async () => {const it = items.find(x => x.id === b.dataset.toggle); await updateEntry(it.id, Object.assign({}, it.data, {done: !it.data.done})); render();}));
+        list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); updateBadges(); render();} }));
+        list.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => {const it = items.find(x => x.id === b.dataset.edit); openEntryModal('tasks', [{k: 'title', l: 'Sarlavha'}, {k: 'description', l: 'Tavsif', t: 'textarea'}, {k: 'priority', l: 'Muhimlik', t: 'select', opts: ['low', 'normal', 'high', 'critical']}, {k: 'due', l: 'Muddat'}], it.data, it.id);}));
+        $('#add-btn').addEventListener('click', () => openEntryModal('tasks', [{k: 'title', l: 'Sarlavha'}, {k: 'description', l: 'Tavsif', t: 'textarea'}, {k: 'priority', l: 'Muhimlik', t: 'select', opts: ['low', 'normal', 'high', 'critical']}, {k: 'due', l: 'Muddat'}], {}, null));
+      }
+
+      /* ============ CALENDAR ============ */
+      async function renderCalendar() {
+        const now = new Date(); const y = now.getFullYear(), m = now.getMonth();
+        const startDay = (new Date(y, m, 1).getDay() + 6) % 7;
+        const days = new Date(y, m + 1, 0).getDate();
+        const mNames = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'];
+        const tasks = await listModule('tasks');
+        const marks = {}; tasks.forEach(t => {if (t.data.due) marks[t.data.due] = (marks[t.data.due] || 0) + 1;});
+        let html = '';
+        for (let i = 0; i < startDay; i++)html += '<div style="padding:.4em"></div>';
+        for (let d = 1; d <= days; d++) {
+          const ds = `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+          const isT = d === now.getDate();
+          const c = marks[ds] ? 'var(--warn)' : 'var(--line)';
+          html += `<div style="padding:.5em;text-align:center;border:1px solid ${c};background:${isT ? 'var(--glass)' : 'var(--panel2)'};font-family:var(--mono);font-size:11px;border-radius:var(--r)">${d}${marks[ds] ? ' •' : ''}</div>`;
+        }
+        body().innerHTML = `<div class="panel"><div class="panel-head"><h3>◈ ${mNames[m]} ${y}</h3></div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:1em">
+      ${['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'].map(d => `<div style="text-align:center;font-family:var(--mono);font-size:10px;color:var(--ink-faint);padding:.4em">${d}</div>`).join('')}${html}</div>
+    <div class="panel-head"><h3>◈ YAQIN</h3></div>
+    ${tasks.filter(t => t.data.due && !t.data.done).sort((a, b) => a.data.due.localeCompare(b.data.due)).slice(0, 10).map(t => `<div class="entry" style="border-left-color:var(--warn)"><div><div class="entry-title">${escapeHtml(t.data.title || '')}</div><div class="meta">📅 ${t.data.due}</div></div></div>`).join('') || '<div class="empty">' + T('empty') + '</div>'}
+  </div>`;
+      }
+
+      /* ============ GOALS ============ */
+      async function renderGoals() {
+        const items = await listModule('goals');
+        const total = items.reduce((s, i) => s + (parseFloat(i.data.price) || 0), 0);
+        const achieved = items.filter(i => i.data.done).length;
+        body().innerHTML = `<div class="panel">
+    <div class="panel-head"><h3>🎯 MAQSADLAR <span class="tag info">${items.length}</span></h3>
+      <button class="btn" id="add-btn">${T('btnAdd')}</button></div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));margin-bottom:1em">
+      <div class="card"><h3>Jami</h3><div class="num">${items.length}</div></div>
+      <div class="card"><h3>Qiymat</h3><div class="num" style="font-size:1.3rem">${total.toFixed(0)}</div></div>
+      <div class="card ok"><h3>Erishildi</h3><div class="num" style="color:var(--ok)">${achieved}</div></div>
+      <div class="card warn"><h3>Qoldi</h3><div class="num" style="color:var(--warn)">${items.length - achieved}</div></div>
+    </div>
+    <div class="goal-grid" id="goals-list">${items.length ? '' : '<div class="empty" style="grid-column:1/-1">' + T('empty') + '</div>'}</div>
+  </div>`;
+        const list = $('#goals-list');
+        items.forEach(it => {
+          const img = it.mediaUrl || it.data.dataUrl || '';
+          const div = document.createElement('div');
+          div.className = 'goal-card';
+          div.innerHTML = `
+      <div class="goal-actions">
+        <button class="iconbtn" data-edit="${it.id}">✎</button>
+        <button class="iconbtn" data-del="${it.id}">✕</button>
+      </div>
+      <div class="goal-image">${img ? `<img src="${img}" loading="lazy">` : '🎯'}</div>
+      <div class="goal-body">
+        <div class="goal-name">${escapeHtml(it.data.title || '')}</div>
+        <div class="goal-price">${it.data.price ? parseFloat(it.data.price).toFixed(0) : '—'} ${escapeHtml(it.data.currency || 'so\'m')}</div>
+        <div class="goal-meta">
+          <span>${it.data.priority ? '⚡ ' + it.data.priority : ''} ${it.data.deadline ? '📅 ' + it.data.deadline : ''}</span>
+          ${it.data.done ? '<span class="tag ok">✓</span>' : ''}
+        </div>
+      </div>`;
+          list.appendChild(div);
+        });
+        list.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', (e) => {e.stopPropagation(); const it = items.find(x => x.id === b.dataset.edit); openGoalModal(it.data, it.id);}));
+        list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async (e) => {e.stopPropagation(); if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); updateBadges(); render();} }));
+        $('#add-btn').addEventListener('click', () => openGoalModal({}, null));
+      }
+      function openGoalModal(data, id) {
+        const bg = document.createElement('div'); bg.className = 'modal-bg';
+        bg.innerHTML = `<div class="modal"><h3>🎯 ${id ? '✎' : '+ Yangi'}</h3>
+    ${fieldInput({k: 'title', l: 'Maqsad nomi'}, data.title || '')}
+    ${fieldInput({k: 'price', l: 'Narxi'}, data.price || '')}
+    ${fieldInput({k: 'currency', l: 'Valyuta'}, data.currency || 'so\'m')}
+    ${fieldInput({k: 'deadline', l: 'Muddat'}, data.deadline || '')}
+    <div class="field"><label>Muhimlik</label><select data-f="priority">
+      <option value="">—</option>
+      <option value="past" ${data.priority === 'past' ? 'selected' : ''}>🟢 Past</option>
+      <option value="orta" ${data.priority === 'orta' ? 'selected' : ''}>🟡 O'rta</option>
+      <option value="yuqori" ${data.priority === 'yuqori' ? 'selected' : ''}>🔴 Yuqori</option>
+    </select></div>
+    ${fieldInput({k: 'notes', l: 'Izoh', t: 'textarea'}, data.notes || '')}
+    <div class="field"><label>Rasm</label><input type="file" id="goal-photo" accept="image/*"></div>
+    <div class="field" style="display:flex;align-items:center;gap:.5em">
+      <input type="checkbox" id="goal-done" ${data.done ? 'checked' : ''} style="width:auto;min-height:auto">
+      <label for="goal-done" style="margin:0;text-transform:none">Erishildi ✓</label>
+    </div>
+    <div class="row" style="margin-top:1em"><button class="btn ghost" id="m-cancel">${T('btnCancel')}</button><button class="btn" id="m-save">${T('btnSave')}</button></div></div>`;
+        document.body.appendChild(bg);
+        let photoBlob = null;
+        bg.querySelector('#goal-photo').addEventListener('change', e => {const f = e.target.files[0]; if (!f) return; photoBlob = f; toast('📷', 'ok', 1000);});
+        bg.querySelector('#m-cancel').addEventListener('click', () => bg.remove());
+        bg.querySelector('#m-save').addEventListener('click', async () => {
+          const out = Object.assign({}, data);
+          ['title', 'price', 'currency', 'deadline', 'priority', 'notes'].forEach(k => out[k] = bg.querySelector(`[data-f="${k}"]`).value);
+          out.done = bg.querySelector('#goal-done').checked;
+          if (photoBlob) {
+            const newId = id || uuid();
+            try {await blobSet(newId, photoBlob); out.hasBlob = true;} catch (e) { }
+            if (id) await updateEntry(id, out);
+            else {
+              const rec = await aesEncryptJSON(vaultKey, out, 'goals:' + newId);
+              entriesCache.push({id: newId, module: 'goals', rec, createdAt: Date.now(), updatedAt: Date.now()});
+              await Store.set('entries', entriesCache);
+            }
+          } else {
+            if (id) await updateEntry(id, out); else await addEntry('goals', out);
+          }
+          bg.remove(); updateBadges(); render(); toast('✅', 'ok', 1200);
+        });
+      }
+
+      /* ============ WALLET ============ */
+      async function renderWallet() {
+        const items = await listModule('wallet');
+        const txItems = await listModule('transactions');
+        let totalIncome = 0, totalExpense = 0;
+        const byCur = {};
+        items.forEach(it => {const cur = it.data.currency || 'UZS'; const amt = parseFloat(it.data.amount) || 0; byCur[cur] = (byCur[cur] || 0) + amt;});
+        txItems.forEach(t => {const amt = parseFloat(t.data.amount) || 0; if (t.data.type === 'income') totalIncome += amt; else totalExpense += amt;});
+        let totalUZS = 0;
+        const rates = {UZS: 1, USD: 12800, EUR: 13800, RUB: 135, BTC: 850000000, ETH: 48000000, USDT: 12800, XAU: 1050000};
+        Object.entries(byCur).forEach(([c, a]) => {totalUZS += a * (rates[c] || 1);});
+        body().innerHTML = `
+    <div class="panel" style="background:linear-gradient(135deg,var(--panel),var(--panel2))">
+      <div class="small mono" style="letter-spacing:.2em;color:var(--ink-dim);margin-bottom:.5em">◈ JAMI BOYLIK</div>
+      <div class="kpi-value" style="font-size:1.8rem">${totalUZS.toFixed(0)} so'm</div>
+      <div class="small mono" style="margin-top:.5em;color:var(--ink-dim)">${items.length} hisob · ${Object.keys(byCur).length} valyuta</div>
+      <div style="display:flex;gap:.4em;flex-wrap:wrap;margin-top:.8em">${Object.entries(byCur).map(([c, a]) => `<div class="chip">${c}: ${a.toFixed(2)}</div>`).join('') || ''}</div>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(130px,1fr));margin-bottom:1em">
+      <div class="card"><h3>Daromad</h3><div class="num" style="color:var(--ok);font-size:1.3rem">+${totalIncome.toFixed(0)}</div></div>
+      <div class="card"><h3>Xarajat</h3><div class="num" style="color:var(--danger);font-size:1.3rem">-${totalExpense.toFixed(0)}</div></div>
+      <div class="card"><h3>Balans</h3><div class="num" style="font-size:1.3rem">${(totalIncome - totalExpense).toFixed(0)}</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>◈ HISOBLAR</h3><button class="btn" id="add-account">${T('btnAdd')}</button></div>
+      <div>${items.length ? items.map(it => `
+        <div class="transaction">
+          <div class="transaction-icon">💰</div>
+          <div class="transaction-info"><div style="font-weight:600">${escapeHtml(it.data.title || '')}</div>
+            <div class="small mono">${it.data.currency || 'UZS'}</div></div>
+          <div class="transaction-amount">${(parseFloat(it.data.amount) || 0).toFixed(2)}</div>
+          <div class="actions"><button class="iconbtn" data-edit="${it.id}">✎</button><button class="iconbtn" data-del="${it.id}">✕</button></div>
+        </div>`).join('') : '<div class="empty">' + T('empty') + '</div>'}
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>◈ TRANZAKSIYA</h3><button class="btn" id="add-tx">${T('btnAdd')}</button></div>
+      <div>${txItems.length ? txItems.slice(0, 20).map(t => {
+          const isIncome = t.data.type === 'income';
+          const cat = CATS.find(c => c.id === t.data.category) || {icon: '📦', name: ''};
+          return `<div class="transaction ${isIncome ? 'income' : 'expense'}">
+          <div class="transaction-icon">${cat.icon}</div>
+          <div class="transaction-info"><div style="font-weight:600">${escapeHtml(t.data.title || '')}</div>
+            <div class="small mono">${cat.name} · ${t.data.date || ''}</div></div>
+          <div class="transaction-amount ${isIncome ? 'income' : 'expense'}">${isIncome ? '+' : '-'}${(parseFloat(t.data.amount) || 0).toFixed(0)}</div>
+          <div class="actions"><button class="iconbtn" data-tx-del="${t.id}">✕</button></div>
+        </div>`;
+        }).join('') : '<div class="empty">' + T('empty') + '</div>'}
+      </div>
+    </div>`;
+        $('#add-account')?.addEventListener('click', () => openEntryModal('wallet', [{k: 'title', l: 'Hisob nomi'}, {k: 'currency', l: 'Valyuta', t: 'select', opts: Object.keys(rates)}, {k: 'amount', l: 'Balans'}, {k: 'notes', l: 'Izoh'}], {}, null));
+        body().querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => {const it = items.find(x => x.id === b.dataset.edit); openEntryModal('wallet', [{k: 'title', l: 'Hisob'}, {k: 'currency', l: 'Valyuta', t: 'select', opts: Object.keys(rates)}, {k: 'amount', l: 'Balans'}, {k: 'notes', l: 'Izoh'}], it.data, it.id);}));
+        body().querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); updateBadges(); render();} }));
+        body().querySelectorAll('[data-tx-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.txDel); render();} }));
+        $('#add-tx')?.addEventListener('click', () => openTxModal({}, null));
+      }
+      function openTxModal(data, id) {
+        const bg = document.createElement('div'); bg.className = 'modal-bg';
+        bg.innerHTML = `<div class="modal"><h3>${id ? '✎' : '+ Yangi'}</h3>
+    ${fieldInput({k: 'title', l: 'Sarlavha'}, data.title || '')}
+    <div class="field"><label>Turi</label><select data-f="type"><option value="income" ${data.type === 'income' ? 'selected' : ''}>Daromad</option><option value="expense" ${data.type === 'expense' ? 'selected' : ''}>Xarajat</option></select></div>
+    <div class="field"><label>Kategoriya</label><select data-f="category">${CATS.map(c => `<option value="${c.id}" ${c.id === data.category ? 'selected' : ''}>${c.icon} ${c.name}</option>`).join('')}</select></div>
+    <div class="field"><label>Summa</label><input data-f="amount" type="number" value="${data.amount || ''}"></div>
+    <div class="field"><label>Sana</label><input data-f="date" type="date" value="${data.date || new Date().toISOString().slice(0, 10)}"></div>
+    <div class="row" style="margin-top:1em"><button class="btn ghost" id="m-cancel">${T('btnCancel')}</button><button class="btn" id="m-save">${T('btnSave')}</button></div></div>`;
+        document.body.appendChild(bg);
+        bg.querySelector('#m-cancel').addEventListener('click', () => bg.remove());
+        bg.querySelector('#m-save').addEventListener('click', async () => {
+          const out = Object.assign({}, data);
+          ['title', 'type', 'category', 'amount', 'date'].forEach(k => out[k] = bg.querySelector(`[data-f="${k}"]`).value);
+          if (id) await updateEntry(id, out); else await addEntry('transactions', out);
+          bg.remove(); render(); toast('✅', 'ok', 1200);
+        });
+      }
+
+      const CATS = [{id: 'salary', name: 'Maosh', icon: '💼'}, {id: 'business', name: 'Biznes', icon: '📈'}, {id: 'gift', name: 'Sovg\'a', icon: '🎁'}, {id: 'invest', name: 'Invest', icon: '💎'}, {id: 'food', name: 'Oziq-ovqat', icon: '🍔'}, {id: 'transport', name: 'Transport', icon: '🚗'}, {id: 'home', name: 'Uy', icon: '🏠'}, {id: 'fun', name: 'Ko\'ngil', icon: '🎮'}, {id: 'health', name: 'Salomatlik', icon: '💊'}, {id: 'education', name: 'Ta\'lim', icon: '📚'}, {id: 'bills', name: 'Kommunal', icon: '💡'}, {id: 'other', name: 'Boshqa', icon: '📦'}];
+
+      /* ============ BLACKLIST ============ */
+      async function renderBlacklist() {
+        const items = await listModule('blacklist');
+        body().innerHTML = `<div class="panel">
+    <div class="panel-head"><h3>⛔ QORA RO'YXAT <span class="tag danger">${items.length}</span></h3>
+      <button class="btn danger" id="add-btn">${T('btnAdd')}</button></div>
+    <div id="list-wrap"></div>
+  </div>`;
+        const list = $('#list-wrap');
+        if (!items.length) {list.innerHTML = '<div class="empty">' + T('empty') + '</div>';}
+        items.forEach(it => {
+          const sev = it.data.severity || 'medium';
+          const div = document.createElement('div'); div.className = 'entry';
+          div.style.borderLeftColor = 'var(--danger)';
+          div.style.background = 'linear-gradient(135deg,var(--panel2),rgba(217,74,58,.05))';
+          div.innerHTML = `
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#500,#200);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;overflow:hidden">${it.data.photo ? '<img src="' + it.data.photo + '" style="width:100%;height:100%;object-fit:cover">' : '🚫'}</div>
+      <div style="flex:1;min-width:0">
+        <div class="entry-title">${escapeHtml(it.data.name || '')}</div>
+        <div class="meta">Sabab: ${escapeHtml(it.data.reason || '—')}</div>
+        <div class="meta"><span class="tag ${sev === 'critical' ? 'danger' : sev === 'high' ? 'danger' : sev === 'medium' ? 'warn' : 'info'}">${sev.toUpperCase()}</span> ${it.data.date ? '📅 ' + it.data.date : ''}</div>
+      </div>
+      <div class="actions"><button class="iconbtn" data-del="${it.id}">✕</button></div>`;
+          list.appendChild(div);
+        });
+        list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); updateBadges(); render();} }));
+        $('#add-btn').addEventListener('click', () => {
+          const bg = document.createElement('div'); bg.className = 'modal-bg';
+          bg.innerHTML = `<div class="modal"><h3>⛔ Yangi</h3>
+      ${fieldInput({k: 'name', l: 'To\'liq ism'}, '')}
+      ${fieldInput({k: 'reason', l: 'Sabab'}, '')}
+      <div class="field"><label>Xavf</label><select data-f="severity">
+        <option value="low">🟢 Past</option><option value="medium" selected>🟡 O'rta</option>
+        <option value="high">🟠 Yuqori</option><option value="critical">🔴 Kritik</option></select></div>
+      ${fieldInput({k: 'date', l: 'Sana'}, new Date().toISOString().slice(0, 10))}
+      ${fieldInput({k: 'evidence', l: 'Dalil', t: 'textarea'}, '')}
+      <div class="field"><label>Rasm</label><input type="file" id="bl-photo" accept="image/*"></div>
+      <div class="row" style="margin-top:1em"><button class="btn ghost" id="m-cancel">${T('btnCancel')}</button><button class="btn danger" id="m-save">⛔</button></div></div>`;
+          document.body.appendChild(bg);
+          let photoData = '';
+          bg.querySelector('#bl-photo').addEventListener('change', e => {const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => {photoData = r.result; toast('📷', 'ok', 1000);}; r.readAsDataURL(f);});
+          bg.querySelector('#m-cancel').addEventListener('click', () => bg.remove());
+          bg.querySelector('#m-save').addEventListener('click', async () => {
+            const out = {name: bg.querySelector('[data-f="name"]').value, reason: bg.querySelector('[data-f="reason"]').value, severity: bg.querySelector('[data-f="severity"]').value, date: bg.querySelector('[data-f="date"]').value, evidence: bg.querySelector('[data-f="evidence"]').value, photo: photoData};
+            await addEntry('blacklist', out);
+            bg.remove(); updateBadges(); render(); toast('⛔', 'warn', 1500);
+          });
+        });
+      }
+
+      /* ============ SCHEDULE ============ */
+      async function renderSchedule() {
+        const items = await listModule('schedule');
+        const today = new Date().toISOString().slice(0, 10);
+        const todayItems = items.filter(i => i.data.date === today);
+        body().innerHTML = `
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));margin-bottom:1em">
+      <div class="card"><h3>Bugun</h3><div class="num">${todayItems.length}</div></div>
+      <div class="card"><h3>Jami</h3><div class="num">${items.length}</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>◈ KUN TARTIBI — ${today}</h3><button class="btn" id="add-btn">${T('btnAdd')}</button></div>
+      <div id="list-wrap"></div>
+    </div>`;
+        const list = $('#list-wrap');
+        if (!todayItems.length) list.innerHTML = '<div class="empty">' + T('empty') + '</div>';
+        todayItems.sort((a, b) => (a.data.time || '').localeCompare(b.data.time || '')).forEach(it => {
+          const div = document.createElement('div'); div.className = 'entry';
+          div.innerHTML = `<div style="flex:1"><div class="entry-title">${it.data.time ? '⏰ ' + it.data.time + ' · ' : ''}${escapeHtml(it.data.title || '')}</div>
+      <div class="meta">${escapeHtml(it.data.notes || '')}</div></div>
+      <div class="actions"><button class="iconbtn" data-del="${it.id}">✕</button></div>`;
+          list.appendChild(div);
+        });
+        list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); render();} }));
+        $('#add-btn').addEventListener('click', () => openEntryModal('schedule', [{k: 'title', l: 'Sarlavha'}, {k: 'date', l: 'Sana'}, {k: 'time', l: 'Vaqt'}, {k: 'notes', l: 'Izoh', t: 'textarea'}], {date: today}, null));
+      }
+
+      /* ============ SCHOOL ============ */
+      async function renderSchool() {
+        const DAYS = ['Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma', 'Shanba'];
+        const items = await listModule('school');
+        const byDay = {}; DAYS.forEach(d => byDay[d] = []);
+        items.forEach(it => {if (byDay[it.data.day]) byDay[it.data.day].push(it);});
+        const lessons = [1, 2, 3, 4, 5, 6];
+        const todayIdx = new Date().getDay();
+        const todayName = DAYS[todayIdx === 0 ? 0 : todayIdx - 1] || DAYS[0];
+        body().innerHTML = `
+    <div class="panel">
+      <div class="panel-head"><h3>◈ FAN JADVALI</h3><button class="btn" id="add-btn">${T('btnAdd')}</button></div>
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><div class="schedule-grid" style="grid-template-columns:60px repeat(6,minmax(100px,1fr));min-width:700px">
+        <div class="schedule-cell header">Dars</div>
+        ${DAYS.map(d => `<div class="schedule-cell header">${d.slice(0, 3)}</div>`).join('')}
+        ${lessons.map(n => `
+          <div class="schedule-cell" style="text-align:center;background:var(--glass);font-family:var(--mono);font-weight:700">${n}</div>
+          ${DAYS.map(d => {
+          const lesson = byDay[d].find(l => String(l.data.lesson) === String(n));
+          if (lesson) {
+            const colors = ['#d94a3a', '#e8b95c', '#6b8f5a', '#5a9ac8', '#a040e0', '#e07a30', '#40c8a0'];
+            const ci = (parseInt(n) + DAYS.indexOf(d)) % colors.length;
+            return `<div class="schedule-cell lesson" style="border-left-color:${colors[ci]}">
+                <div style="font-weight:700;font-size:11px">${escapeHtml(lesson.data.subject || '')}</div>
+                <div style="font-size:9.5px;color:var(--ink-dim);margin-top:2px">${escapeHtml(lesson.data.teacher || '')}</div>
+              </div>`;
+          }
+          return '<div class="schedule-cell"></div>';
+        }).join('')}
+        `).join('')}
+      </div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>◈ BUGUN — ${todayName}</h3></div>
+      <div id="today-list"></div>
+    </div>`;
+        const tList = $('#today-list');
+        const todayLessons = byDay[todayName].sort((a, b) => a.data.lesson - b.data.lesson);
+        if (!todayLessons.length) tList.innerHTML = '<div class="empty">' + T('empty') + '</div>';
+        todayLessons.forEach(l => {
+          const div = document.createElement('div'); div.className = 'entry';
+          div.innerHTML = `<div style="flex:1"><div class="entry-title">📖 ${l.data.lesson} · ${escapeHtml(l.data.subject || '')}</div>
+      <div class="meta">👨‍🏫 ${escapeHtml(l.data.teacher || '')} · 🚪 ${escapeHtml(l.data.room || '')}</div></div>
+      <div class="actions"><button class="iconbtn" data-del="${l.id}">✕</button></div>`;
+          tList.appendChild(div);
+        });
+        tList.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); render();} }));
+        $('#add-btn').addEventListener('click', () => openEntryModal('school', [
+          {k: 'day', l: 'Kun', t: 'select', opts: DAYS},
+          {k: 'lesson', l: 'Dars raqami', t: 'select', opts: ['1', '2', '3', '4', '5', '6']},
+          {k: 'subject', l: 'Fan'}, {k: 'teacher', l: 'O\'qituvchi'}, {k: 'room', l: 'Xona'}
+        ], {}, null));
+      }
+
+      /* ============ TEAM ============ */
+      async function renderTeam() {
+        const items = await listModule('team');
+        body().innerHTML = `<div class="panel">
+    <div class="panel-head"><h3>◈ JAMOA <span class="tag info">${items.length}</span></h3>
+      <button class="btn" id="add-btn">${T('btnAdd')}</button></div>
+    <div class="grid" id="list-wrap" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr))"></div>
+  </div>`;
+        const list = $('#list-wrap');
+        if (!items.length) list.innerHTML = '<div class="empty" style="grid-column:1/-1">' + T('empty') + '</div>';
+        items.forEach(it => {
+          const initials = (it.data.firstName || '?')[0] + (it.data.lastName || '?')[0];
+          const div = document.createElement('div'); div.className = 'card';
+          div.innerHTML = `
+      <div style="display:flex;align-items:center;gap:.9em;margin-bottom:.8em">
+        <div class="team-avatar">${it.data.photo ? `<img src="${it.data.photo}">` : initials.toUpperCase()}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:700;font-size:14px">${escapeHtml(it.data.firstName || '')} ${escapeHtml(it.data.lastName || '')}</div>
+          <div class="small mono" style="color:var(--accent)">${escapeHtml(it.data.role || '')}</div>
+        </div>
+      </div>
+      <div class="small mono" style="display:grid;gap:.3em;color:var(--ink-dim);word-break:break-word">
+        <div>🎂 ${it.data.birthDate || '—'}</div>
+        <div>📞 ${escapeHtml(it.data.phone1 || '—')}${it.data.phone2 ? ' / ' + escapeHtml(it.data.phone2) : ''}</div>
+        <div>✉ ${escapeHtml(it.data.email || '—')}</div>
+        <div>💰 ${escapeHtml(it.data.salary || '—')}</div>
+      </div>
+      <div class="actions" style="margin-top:.8em;display:flex;gap:.3em"><button class="iconbtn" data-edit="${it.id}">✎</button><button class="iconbtn" data-del="${it.id}">✕</button></div>`;
+          list.appendChild(div);
+        });
+        list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); updateBadges(); render();} }));
+        list.querySelectorAll('[data-edit]').forEach(b => b.addEventListener('click', () => {const it = items.find(x => x.id === b.dataset.edit); openTeamModal(it.data, it.id);}));
+        $('#add-btn').addEventListener('click', () => openTeamModal({}, null));
+      }
+      function openTeamModal(data, id) {
+        const bg = document.createElement('div'); bg.className = 'modal-bg';
+        bg.innerHTML = `<div class="modal"><h3>${id ? '✎' : '+ Yangi a\'zo'}</h3>
+    <div class="row">${fieldInput({k: 'firstName', l: 'Ism'}, data.firstName || '')}${fieldInput({k: 'lastName', l: 'Familya'}, data.lastName || '')}</div>
+    ${fieldInput({k: 'birthDate', l: 'Tug\'ilgan sana'}, data.birthDate || '')}
+    ${fieldInput({k: 'phone1', l: 'Asosiy raqam'}, data.phone1 || '')}
+    ${fieldInput({k: 'phone2', l: '2-raqam'}, data.phone2 || '')}
+    ${fieldInput({k: 'email', l: 'Email'}, data.email || '')}
+    ${fieldInput({k: 'role', l: 'Maqom'}, data.role || '')}
+    ${fieldInput({k: 'salary', l: 'Daromad'}, data.salary || '')}
+    <div class="field"><label>Rasm</label><input type="file" id="team-photo" accept="image/*"></div>
+    ${fieldInput({k: 'notes', l: 'Izoh', t: 'textarea'}, data.notes || '')}
+    <div class="row" style="margin-top:1em"><button class="btn ghost" id="m-cancel">${T('btnCancel')}</button><button class="btn" id="m-save">${T('btnSave')}</button></div></div>`;
+        document.body.appendChild(bg);
+        let photoData = data.photo || '';
+        bg.querySelector('#team-photo').addEventListener('change', e => {const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => {photoData = r.result; toast('📷', 'ok', 1000);}; r.readAsDataURL(f);});
+        bg.querySelector('#m-cancel').addEventListener('click', () => bg.remove());
+        bg.querySelector('#m-save').addEventListener('click', async () => {
+          const out = Object.assign({}, data);
+          ['firstName', 'lastName', 'birthDate', 'phone1', 'phone2', 'email', 'role', 'salary', 'notes'].forEach(k => out[k] = bg.querySelector(`[data-f="${k}"]`).value);
+          out.photo = photoData;
+          if (!out.phone1) {toast('Asosiy raqam majburiy', 'err'); return;}
+          if (id) await updateEntry(id, out); else await addEntry('team', out);
+          bg.remove(); updateBadges(); render(); toast('✅', 'ok', 1200);
+        });
+      }
+
+      /* ============ JOB ============ */
+      async function renderJob() {
+        const projects = await listModule('projects');
+        const clients = await listModule('clients');
+        const tasks = await listModule('tasks');
+        body().innerHTML = `
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));margin-bottom:1em">
+      <div class="card"><h3>Loyihalar</h3><div class="num">${projects.length}</div></div>
+      <div class="card"><h3>Mijozlar</h3><div class="num">${clients.length}</div></div>
+      <div class="card"><h3>Vazifalar</h3><div class="num">${tasks.length}</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>◈ LOYIHALAR</h3><button class="btn" id="add-proj">${T('btnAdd')}</button></div>
+      <div id="list-wrap"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>◈ MIJOZLAR</h3><button class="btn" id="add-client">${T('btnAdd')}</button></div>
+      <div id="clients"></div>
+    </div>`;
+        const list = $('#list-wrap');
+        if (!projects.length) list.innerHTML = '<div class="empty">' + T('empty') + '</div>';
+        projects.forEach(it => {
+          const div = document.createElement('div'); div.className = 'entry';
+          div.innerHTML = `<div style="flex:1"><div class="entry-title">📁 ${escapeHtml(it.data.title || '')}</div>
+      <div class="meta">🤝 ${escapeHtml(it.data.client || '')} · ${it.data.deadline || ''}</div>
+      <div class="meta">💰 ${it.data.budget || ''}</div></div>
+      <div class="actions"><button class="iconbtn" data-del="${it.id}">✕</button></div>`;
+          list.appendChild(div);
+        });
+        list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); render();} }));
+        const cl = $('#clients');
+        if (!clients.length) cl.innerHTML = '<div class="empty">' + T('empty') + '</div>';
+        clients.forEach(it => {
+          const div = document.createElement('div'); div.className = 'entry';
+          div.innerHTML = `<div style="flex:1"><div class="entry-title">🤝 ${escapeHtml(it.data.title || '')}</div>
+      <div class="meta">📞 ${escapeHtml(it.data.phone || '')} · ✉ ${escapeHtml(it.data.email || '')}</div></div>
+      <div class="actions"><button class="iconbtn" data-del="${it.id}">✕</button></div>`;
+          cl.appendChild(div);
+        });
+        cl.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); render();} }));
+        $('#add-proj').addEventListener('click', () => openEntryModal('projects', [{k: 'title', l: 'Loyiha'}, {k: 'client', l: 'Mijoz'}, {k: 'deadline', l: 'Deadline'}, {k: 'budget', l: 'Budjet'}, {k: 'description', l: 'Tavsif', t: 'textarea'}], {}, null));
+        $('#add-client').addEventListener('click', () => openEntryModal('clients', [{k: 'title', l: 'Mijoz'}, {k: 'phone', l: 'Telefon'}, {k: 'email', l: 'Email'}, {k: 'company', l: 'Kompaniya'}], {}, null));
+      }
+
+      /* ============ FILES ============ */
+      async function renderFiles() {
+        const items = await listModule('files');
+        body().innerHTML = `<div class="panel"><div class="panel-head"><h3>◈ FAYLLAR <span class="tag info">${items.length}</span></h3>
+    <button class="btn" id="add-btn">${T('btnAdd')}</button></div>
+    <div id="list-wrap"></div></div>`;
+        const list = $('#list-wrap');
+        if (!items.length) list.innerHTML = '<div class="empty">' + T('empty') + '</div>';
+        items.forEach(it => {
+          const div = document.createElement('div'); div.className = 'entry';
+          const sz = it.data.size ? (it.data.size / 1024).toFixed(1) + ' KB' : '—';
+          div.innerHTML = `<div style="flex:1;min-width:0"><div class="entry-title">📎 ${escapeHtml(it.data.title || '')}</div>
+      <div class="meta">${it.data.mime || ''} · ${sz}</div></div>
+      <div class="actions"><button class="iconbtn" data-dl="${it.id}">↧</button><button class="iconbtn" data-del="${it.id}">✕</button></div>`;
+          list.appendChild(div);
+        });
+        list.querySelectorAll('[data-dl]').forEach(b => b.addEventListener('click', async () => {
+          const it = items.find(x => x.id === b.dataset.dl);
+          let url = it.mediaUrl; if (!url && it.data.dataUrl) url = it.data.dataUrl;
+          if (!url) {toast('Topilmadi', 'err'); return;}
+          const a = document.createElement('a'); a.href = url; a.download = it.data.title || 'file'; a.click();
+        }));
+        list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); updateBadges(); render();} }));
+        $('#add-btn').addEventListener('click', () => {
+          const inp = document.createElement('input'); inp.type = 'file';
+          inp.addEventListener('change', async () => {
+            const f = inp.files[0]; if (!f) return;
+            const id = uuid();
+            await blobSet(id, f);
+            if (FS.handle) {try {await FS.writeFile('files', 'file-' + Date.now() + '-' + f.name, f);} catch (e) { } }
+            const rec = await aesEncryptJSON(vaultKey, {title: f.name, mime: f.type, size: f.size, hasBlob: true}, 'files:' + id);
+            entriesCache.push({id, module: 'files', rec, createdAt: Date.now(), updatedAt: Date.now()});
+            await Store.set('entries', entriesCache);
+            updateBadges(); render(); toast('📎', 'ok');
+          });
+          inp.click();
+        });
+      }
+
+      /* ============ MEDIA ============ */
+      async function renderMedia(module) {
+        const items = await listModule(module);
+        body().innerHTML = `<div class="panel">
+    <div class="panel-head">
+      <h3>◈ MEDIA <span class="tag info">${items.length}</span></h3>
+      <label class="btn" style="cursor:pointer;position:relative;overflow:hidden">
+        ${T('btnAdd')}
+        <input type="file" id="media-inp" accept="image/*,video/*" multiple style="position:absolute;inset:0;opacity:0;cursor:pointer">
+      </label>
+    </div>
+    <div class="media-grid" id="gallery"></div>
+  </div>`;
+        const g = $('#gallery');
+        if (!items.length) {g.innerHTML = '<div class="empty" style="grid-column:1/-1">' + T('empty') + '</div>';}
+        items.forEach(it => {
+          const div = document.createElement('div'); div.className = 'media-item';
+          const isVid = (it.data.mime || '').startsWith('video');
+          const url = it.mediaUrl || '';
+          if (!url) {
+            div.innerHTML = `<div style="width:100%;height:110px;background:var(--panel3);display:flex;align-items:center;justify-content:center;border-radius:var(--r);font-size:2rem;opacity:.4">🖼</div>
+        <div class="media-title">${escapeHtml(it.data.title || '')}</div>
+        <button class="media-del" data-del="${it.id}">✕</button>`;
+          } else {
+            div.innerHTML = `${isVid ? `<video src="${url}" muted preload="metadata"></video>` : `<img src="${url}" loading="lazy">`}
+        <div class="media-title">${escapeHtml(it.data.title || '')}</div>
+        <button class="media-del" data-del="${it.id}">✕</button>`;
+          }
+          div.addEventListener('click', (e) => {if (e.target.closest('.media-del')) return; if (!url) {toast('Yuklanmagan', 'warn'); return;} openImagePreview(url, it.data.title, isVid);});
+          g.appendChild(div);
+        });
+        g.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async (e) => {e.stopPropagation(); if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); render();} }));
+        $('#media-inp').addEventListener('change', async (e) => {
+          const files = Array.from(e.target.files || []);
+          if (!files.length) return;
+          toast(files.length + ' yuklanmoqda...', 'ok', 1500);
+          for (const f of files) {
+            const id = uuid();
+            await blobSet(id, f);
+            if (FS.handle) {try {await FS.writeFile('media', 'media-' + Date.now() + '-' + f.name, f);} catch (er) { } }
+            const rec = await aesEncryptJSON(vaultKey, {title: f.name, mime: f.type, size: f.size, hasBlob: true}, 'media:' + id);
+            entriesCache.push({id, module: 'media', rec, createdAt: Date.now(), updatedAt: Date.now()});
+          }
+          await Store.set('entries', entriesCache);
+          toast('✅ ' + files.length, 'ok'); render();
+        });
+      }
+
+      function openImagePreview(src, title, isVideo) {
+        const bg = document.createElement('div');
+        bg.className = 'image-preview-bg';
+        bg.innerHTML = `${isVideo ? `<video src="${src}" controls autoplay></video>` : `<img src="${src}" alt="${escapeHtml(title || '')}">`}
+    <div class="image-preview-info">${escapeHtml(title || '')}</div>
+    <div class="image-preview-close">✕</div>`;
+        document.body.appendChild(bg);
+        bg.addEventListener('click', (e) => {if (e.target === bg) bg.remove();});
+        bg.querySelector('.image-preview-close').addEventListener('click', () => bg.remove());
+        const escHandler = (e) => {if (e.key === 'Escape') {bg.remove(); document.removeEventListener('keydown', escHandler);} };
+        document.addEventListener('keydown', escHandler);
+      }
+
+      /* ============ AUDIOS ============ */
+      function getAudioFormat(mime, title) {
+        if (mime.includes('mpeg') || mime.includes('mp3')) return 'MP3';
+        if (mime.includes('wav')) return 'WAV';
+        if (mime.includes('m4a') || mime.includes('mp4')) return 'M4A';
+        if (mime.includes('ogg')) return 'OGG';
+        if (mime.includes('aac')) return 'AAC';
+        if (mime.includes('flac')) return 'FLAC';
+        if (mime.includes('webm')) return 'WEBM';
+        if (mime.includes('opus')) return 'OPUS';
+        const ext = (title || '').split('.').pop().toUpperCase();
+        return ext || 'AUDIO';
+      }
+      async function renderAudios() {
+        const items = await listModule('audios');
+        body().innerHTML = `<div class="panel">
+    <div class="panel-head">
+      <h3>◈ AUDIOLAR <span class="tag info">${items.length}</span></h3>
+      <div style="display:flex;gap:.4em;flex-wrap:wrap">
+        <label class="btn" style="cursor:pointer;position:relative;overflow:hidden">
+          ${T('btnAdd')}
+          <input type="file" id="aud-inp" accept="audio/*,.mp3,.wav,.m4a,.ogg,.aac,.flac,.webm,.opus" multiple style="position:absolute;inset:0;opacity:0;cursor:pointer">
+        </label>
+        <button class="btn danger" id="rec-btn">● Yozish</button>
+      </div>
+    </div>
+    <div id="rec-status" class="small mono" style="margin-bottom:.6em"></div>
+    <div id="list-wrap"></div>
+  </div>`;
+        const list = $('#list-wrap');
+        if (!items.length) list.innerHTML = '<div class="empty">' + T('empty') + '</div>';
+        items.forEach(it => {
+          const div = document.createElement('div'); div.className = 'audio-item';
+          const fmt = getAudioFormat(it.data.mime || '', it.data.title || '');
+          const sz = it.data.size ? (it.data.size / 1024).toFixed(1) + ' KB' : '—';
+          const url = it.mediaUrl || '';
+          div.innerHTML = `
+      <div class="audio-info">
+        <div class="audio-title">🔊 ${escapeHtml(it.data.title || '')} <span class="audio-format">${fmt}</span></div>
+        <div class="meta mono" style="font-size:10.5px;color:var(--ink-faint)">${sz} · ${new Date(it.createdAt).toLocaleString(LANG)}</div>
+        ${url ? `<audio controls preload="metadata" src="${url}"></audio>` : ''}
+      </div>
+      <div class="audio-actions">
+        <button class="iconbtn" data-dl="${it.id}">↧</button>
+        <button class="iconbtn" data-del="${it.id}">✕</button>
+      </div>`;
+          list.appendChild(div);
+        });
+        list.querySelectorAll('[data-dl]').forEach(b => b.addEventListener('click', async () => {
+          const it = items.find(x => x.id === b.dataset.dl);
+          let url = it.mediaUrl; if (!url && it.data.dataUrl) url = it.data.dataUrl;
+          if (!url) {toast('Topilmadi', 'err'); return;}
+          const a = document.createElement('a'); a.href = url; a.download = it.data.title || 'audio'; a.click();
+        }));
+        list.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async () => {if (confirm('O\'chirish?')) {await removeEntry(b.dataset.del); updateBadges(); render();} }));
+        $('#aud-inp').addEventListener('change', async (e) => {
+          const files = Array.from(e.target.files || []);
+          if (!files.length) return;
+          toast(files.length + ' yuklanmoqda...', 'ok', 2000);
+          for (const f of files) {
+            const id = uuid();
+            try {
+              await blobSet(id, f);
+              if (FS.handle) {try {await FS.writeFile('audios', 'audio-' + Date.now() + '-' + f.name, f);} catch (er) { } }
+              const rec = await aesEncryptJSON(vaultKey, {title: f.name, mime: f.type, size: f.size, hasBlob: true}, 'audios:' + id);
+              entriesCache.push({id, module: 'audios', rec, createdAt: Date.now(), updatedAt: Date.now()});
+            } catch (er) {console.error(er); toast('Xato: ' + er.message, 'err', 4000);}
+          }
+          await Store.set('entries', entriesCache);
+          toast('✅ ' + files.length, 'ok'); updateBadges(); render();
+        });
+        $('#rec-btn').addEventListener('click', async () => {
+          const st = $('#rec-status');
+          if (mediaRecorder && mediaRecorder.state === 'recording') {mediaRecorder.stop(); return;}
+          try {
+            const stream = await navigator.mediaDevices.getUserMedia({audio: true});
+            const chunks = [];
+            let mimeType = 'audio/webm';
+            if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) mimeType = 'audio/webm;codecs=opus';
+            else if (MediaRecorder.isTypeSupported('audio/mp4')) mimeType = 'audio/mp4';
+            else if (MediaRecorder.isTypeSupported('audio/ogg')) mimeType = 'audio/ogg';
+            mediaRecorder = new MediaRecorder(stream, {mimeType});
+            mediaRecorder.ondataavailable = e => chunks.push(e.data);
+            mediaRecorder.onstop = async () => {
+              stream.getTracks().forEach(t => t.stop());
+              const blob = new Blob(chunks, {type: mediaRecorder.mimeType || mimeType});
+              const ext = blob.type.includes('mp4') ? 'm4a' : blob.type.includes('ogg') ? 'ogg' : 'webm';
+              const id = uuid();
+              try {
+                await blobSet(id, blob);
+                if (FS.handle) {try {await FS.writeFile('audios', 'rec-' + Date.now() + '.' + ext, blob);} catch (er) { } }
+                const rec = await aesEncryptJSON(vaultKey, {title: 'Yozuv ' + new Date().toLocaleTimeString() + '.' + ext, mime: blob.type, size: blob.size, hasBlob: true}, 'audios:' + id);
+                entriesCache.push({id, module: 'audios', rec, createdAt: Date.now(), updatedAt: Date.now()});
+                await Store.set('entries', entriesCache);
+                toast('🎙 Saqlandi', 'ok');
+              } catch (er) {console.error(er); toast('Xato', 'err');}
+              st.textContent = ''; $('#rec-btn').textContent = '● Yozish';
+              updateBadges(); render();
+            };
+            mediaRecorder.start();
+            st.innerHTML = '🔴 Yozilmoqda...'; $('#rec-btn').textContent = '■ Stop';
+          } catch (e) {toast('Mikrofon: ' + e.message, 'err');}
+        });
+      }
+
+      /* ============ ARCHIVE / BACKUP / LOGS / SECURITY / THEMES / SETTINGS ============ */
+      async function renderArchive() {
+        const all = entriesCache.length;
+        const byModule = {}; for (const e of entriesCache) {byModule[e.module] = (byModule[e.module] || 0) + 1;}
+        let totalBlobSize = 0;
+        try {const keys = await blobListKeys(); for (const k of keys) {const b = await blobGet(k); if (b) totalBlobSize += b.size;} } catch (e) { }
+        body().innerHTML = `<div class="panel"><div class="panel-head"><h3>◈ ARXIV</h3></div>
+    <div class="grid">
+      <div class="card"><h3>Yozuvlar</h3><div class="num">${all}</div></div>
+      <div class="card"><h3>Hajm</h3><div class="num" style="font-size:1.3rem">${(totalBlobSize / 1024 / 1024).toFixed(2)}MB</div></div>
+      <div class="card"><h3>Modul</h3><div class="num">${Object.keys(byModule).length}</div></div>
+    </div>
+    <div class="panel-head" style="margin-top:1em"><h3>◈ MODULLAR</h3></div>
+    ${Object.entries(byModule).map(([m, c]) => `<div class="entry"><div><strong>${escapeHtml(m)}</strong></div><span class="tag info">${c}</span></div>`).join('') || '<div class="empty">' + T('empty') + '</div>'}
+  </div>`;
+      }
+      async function renderBackup() {
+        body().innerHTML = `<div class="panel"><div class="panel-head"><h3>💾 ZAXIRA</h3></div>
+    <div class="row" style="flex-direction:column;gap:.6em">
+      <button class="btn" id="bk-export">↧ Eksport</button>
+      <button class="btn warn" id="bk-import">↥ Import</button>
+      <button class="btn ghost" id="bk-verify">✓ Tekshirish</button>
+    </div></div>`;
+        $('#bk-export').addEventListener('click', exportBackup);
+        $('#bk-import').addEventListener('click', importBackup);
+        $('#bk-verify').addEventListener('click', async () => {
+          let ok = 0, fail = 0;
+          for (const e of entriesCache) {try {await decryptEntry(e); ok++;} catch (er) {fail++;} }
+          toast(`OK: ${ok}, Fail: ${fail}`, fail ? 'warn' : 'ok', 5000);
+        });
+      }
+      async function renderLogs() {
+        const logs = Store.getLogs();
+        body().innerHTML = `<div class="panel"><div class="panel-head"><h3>📊 JURNAL <span class="tag info">${logs.length}</span></h3>
+    <button class="btn ghost sm" id="clear-logs">Tozalash</button></div>
+    <div class="field"><input id="log-search" placeholder="${T('search')}"></div>
+    <div id="log-wrap" style="max-height:70vh;overflow-y:auto"></div></div>`;
+        const wrap = $('#log-wrap');
+        const rl = (filter = '') => {
+          const f = logs.filter(l => !filter || (l.action + l.detail).toLowerCase().includes(filter.toLowerCase()));
+          wrap.innerHTML = f.length ? f.slice(0, 200).map(l => {
+            const cls = l.severity === 'err' ? 'danger' : l.severity === 'warn' ? 'warn' : 'info';
+            return `<div style="padding:.6em;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px"><span class="tag ${cls}">${l.action}</span> <span style="color:var(--ink-faint)">${new Date(l.ts).toLocaleString(LANG)}</span><div style="color:var(--ink-dim);margin-top:4px;word-break:break-word">${escapeHtml(l.detail)}</div></div>`;
+          }).join('') : '<div class="empty">' + T('empty') + '</div>';
+        };
+        rl();
+        $('#log-search').addEventListener('input', e => rl(e.target.value));
+        $('#clear-logs').addEventListener('click', async () => {if (confirm('Tozalansinmi?')) {await Store.setLogs([]); render();} });
+      }
+      async function renderSecurity() {
+        const auth = Store.get('auth', {fails: 0});
+        const header = Store.get('header');
+        body().innerHTML = `
+    <div class="grid">
+      <div class="card ok"><h3>🔐 Shifr</h3><div class="num" style="font-size:1.1rem">AES-256</div></div>
+      <div class="card info"><h3>🔑 KDF</h3><div class="num" style="font-size:1.1rem">PBKDF2</div></div>
+      <div class="card"><h3>Urinishlar</h3><div class="num">${auth.fails || 0}</div></div>
+      <div class="card warn"><h3>Auto-lock</h3><div class="num" style="font-size:1.1rem">${Store.get('settings', {}).autolock || 5}m</div></div>
+      <div class="card"><h3>Storage</h3><div class="num" style="font-size:1.1rem">${FS.handle ? 'KVAP' : 'IDB'}</div></div>
+      <div class="card"><h3>Yaratilgan</h3><div class="small" style="margin-top:.5em">${header?.created ? new Date(header.created).toLocaleDateString() : '—'}</div></div>
+    </div>
+    <div class="panel" style="margin-top:1em">
+      <div class="panel-head"><h3>🛡 XAVFSIZLIK</h3></div>
+      <div class="small mono" style="line-height:2">
+        <div>✓ Ikki parol</div><div>✓ AES-256-GCM</div><div>✓ PBKDF2 250K + HKDF</div>
+        <div>✓ Auto-lock</div><div>✓ Brute-force himoyasi</div>
+        <div>✓ Katta fayllar IndexedDB da</div>
+      </div>
+    </div>`;
+      }
+      async function renderThemes() {
+        body().innerHTML = `<div class="panel"><div class="panel-head"><h3>🎨 MAVZULAR <span class="tag info">${THEMES.length}</span></h3></div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))">
+      ${THEMES.map(t => {
+          const a = t.id === currentTheme; return `<div class="card clickable" data-theme-pick="${t.id}" style="${a ? 'border-color:var(--accent);box-shadow:0 0 16px var(--accent-glow)' : ''}">
+        <h3 style="font-size:11.5px;margin-bottom:.4em">${t.name}</h3>
+        <div class="small mono" style="font-size:9.5px;word-break:break-all">${t.id}${a ? ' <span class="tag ok">✓</span>' : ''}</div></div>`;
+        }).join('')}
+    </div></div>`;
+        body().querySelectorAll('[data-theme-pick]').forEach(c => c.addEventListener('click', async () => {await setTheme(c.dataset.themePick); renderThemes();}));
+      }
+      async function renderSettings() {
+        const s = Store.get('settings', {autolock: 5});
+        body().innerHTML = `<div class="panel" style="max-width:600px">
+    <div class="panel-head"><h3>⚙ SOZLAMALAR</h3></div>
+    <div class="field"><label>🌍 Til</label>
+      <select id="set-lang">
+        <option value="uz" ${LANG === 'uz' ? 'selected' : ''}>🇺🇿 O'zbekcha</option>
+        <option value="en" ${LANG === 'en' ? 'selected' : ''}>🇬🇧 English</option>
+        <option value="ru" ${LANG === 'ru' ? 'selected' : ''}>🇷🇺 Русский</option>
+      </select></div>
+    <div class="field"><label>🎨 Mavzu</label><select id="set-theme">${THEMES.map(t => `<option value="${t.id}" ${t.id === currentTheme ? 'selected' : ''}>${t.name}</option>`).join('')}</select></div>
+    <div class="field"><label>⏱ Auto-lock</label><select id="set-autolock">${[1, 5, 15, 30, 60].map(n => `<option value="${n}" ${n === (s.autolock || 5) ? 'selected' : ''}>${n} daqiqa</option>`).join('')}</select></div>
+    <div class="field"><label>👤 Operator</label><input id="set-username" value="${escapeHtml(s.username || 'OPERATOR')}"></div>
+    <button class="btn" id="set-save">${T('btnSave')}</button>
+    <button class="btn ghost" id="set-fs" style="margin-left:.5em">📁 KVAP</button>
+    <button class="btn ghost" id="set-fs-btn" style="margin-left:.5em" onclick="document.getElementById('fs-toggle').click()">⛶ Fullscreen</button>
+    <button class="btn danger" id="set-wipe" style="margin-top:1em;width:100%">🗑 Arxivni o'chirish</button></div>`;
+        $('#set-theme').addEventListener('change', e => applyTheme(e.target.value));
+        $('#set-lang').addEventListener('change', async e => {await setLang(e.target.value);});
+        $('#set-save').addEventListener('click', async () => {
+          const ns = Object.assign({}, s, {theme: $('#set-theme').value, lang: LANG, autolock: parseInt($('#set-autolock').value, 10), username: $('#set-username').value});
+          await Store.set('settings', ns);
+          applyTheme(ns.theme);
+          document.getElementById('side-user-name').textContent = ns.username;
+          resetIdle(); toast('✅', 'ok', 1200);
+        });
+        $('#set-fs').addEventListener('click', async () => {try {await FS.pick(); await Store.init(); Store.updateIndicator(); toast('📁', 'ok');} catch (e) {toast(e.message, 'err');} });
+        $('#set-wipe').addEventListener('click', async () => {
+          if (!confirm('Barcha ma\'lumotlar o\'chiriladi. Davom etasizmi?')) return;
+          if (!confirm('Qaytarib bo\'lmaydi. Ishonchingiz komilmi?')) return;
+          localStorage.clear();
+          try {await idbDel('kvap-root');} catch (e) { }
+          try {const db = await idbOpen(); const tx = db.transaction([DB_STORE, DB_BLOBS], 'readwrite'); tx.objectStore(DB_STORE).clear(); tx.objectStore(DB_BLOBS).clear();} catch (e) { }
+          toast('O\'chirildi', 'warn', 2000); setTimeout(() => location.reload(), 1500);
+        });
+      }
+
+      async function exportBackup() {
+        const dump = {v: 6, ts: Date.now(), entries: entriesCache, header: Store.get('header'), settings: Store.get('settings'), lang: LANG, theme: currentTheme};
+        const name = 'kripteks-' + Date.now() + '.kvap';
+        const raw = JSON.stringify(dump, null, 2);
+        if (FS.handle) {await FS.writeFile('backups', name, raw); toast('💾 ' + name, 'ok');}
+        else {const blob = new Blob([raw], {type: 'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click(); toast('↧ ' + name, 'ok');}
+        await logEvent('EXPORT', name, 'ok');
+      }
+      function importBackup() {
+        const inp = document.createElement('input'); inp.type = 'file'; inp.accept = '.kvap,.json';
+        inp.addEventListener('change', async () => {
+          const f = inp.files[0]; if (!f) return;
+          const txt = await f.text();
+          try {
+            const parsed = JSON.parse(txt);
+            if (!parsed.entries || !parsed.header) throw new Error('Format xato');
+            if (!confirm('Hozirgi ma\'lumot ustiga yozilsinmi?')) return;
+            await Store.set('header', parsed.header);
+            await Store.set('entries', parsed.entries);
+            if (parsed.settings) await Store.set('settings', parsed.settings);
+            if (parsed.theme) applyTheme(parsed.theme);
+            if (parsed.lang) {LANG = parsed.lang; localStorage.setItem('kripteks_lang', LANG);}
+            toast('✅ Import OK', 'ok', 3000);
+            setTimeout(() => location.reload(), 1500);
+          } catch (e) {toast('Xato: ' + e.message, 'err', 5000);}
+        });
+        inp.click();
+      }
+      $('#btn-export')?.addEventListener('click', exportBackup);
+      $('#btn-fs-reconnect')?.addEventListener('click', async () => {try {await FS.pick(); await Store.init(); Store.updateIndicator(); toast('📁 KVAP', 'ok');} catch (e) {toast(e.message, 'err');} });
+      $('#btn-theme-quick')?.addEventListener('click', () => go('themes'));
+
+      function escapeHtml(s) {return String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));}
+
+      // Prevent double-tap zoom
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', (e) => {const now = Date.now(); if (now - lastTouchEnd <= 300) {e.preventDefault();} lastTouchEnd = now;}, {passive: false});
+
+      // Expose for settings button
+      window.toggleFullscreen = toggleFullscreen;
+
+      (async function boot() {
+        bootLog('KRIPTEKS v6.0 initializing...', 'ok');
+        bootLog('Crypto: Web Crypto API', 'ok');
+        try {await Store.init(); if (Store.useFS) bootLog('KVAP mounted', 'ok'); else bootLog('IndexedDB ready', 'ok');} catch (e) {bootLog('Store init: ' + e.message, 'err');}
+        const savedTheme = (Store.get('settings', {}).theme) || localStorage.getItem('kripteks_theme') || 'kripteks';
+        const savedLang = (Store.get('settings', {}).lang) || localStorage.getItem('kripteks_lang') || 'uz';
+        applyTheme(savedTheme);
+        LANG = savedLang;
+        const lst = document.getElementById('lang-status');
+        if (lst) lst.textContent = LANG;
+        applyI18n();
+        bootLog('Theme: ' + savedTheme + ' · Lang: ' + savedLang, 'ok');
+        const header = Store.get('header');
+        if (header) {
+          // Existing vault: skip the "tap to enter" splash every reload — pure friction once set up.
+          const w = document.getElementById('welcome'); if (w) w.style.display = 'none';
+          document.getElementById('gate').classList.remove('hidden');
+          showLock();
+          const hint = header.hint || ''; $('#hint-display').textContent = hint ? '💡 ' + hint : '';
+          bootLog('Vault topildi', 'ok');
+          // Try to resume the session from this tab without re-asking both secrets (see cacheSessionKey note above).
+          const cached = await loadCachedSessionKey();
+          if (cached) {
+            try {
+              await aesDecryptJSON(cached, header.canary, 'kripteks-canary');
+              vaultKey = cached; entriesCache = Store.get('entries', []);
+              bootLog('Seans tiklandi', 'ok');
+              enterApp();
+            } catch (e) {clearCachedSessionKey();}
+          }
+        }
+        else {showSetup(); bootLog('Yangi arxiv kerak', 'warn');}
+        setInterval(() => {const tb = document.getElementById('tb-clock'); if (tb) tb.textContent = new Date().toLocaleTimeString(LANG, {hour: '2-digit', minute: '2-digit'});}, 1000);
+      })();
+
+    })();
+  </script>
+</body>
+
+</html>
